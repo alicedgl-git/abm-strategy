@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+enriched_accounts.csv
+MEMORY.md
+.claude/projects/

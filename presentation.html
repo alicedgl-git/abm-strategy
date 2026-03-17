@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Driven ABM Engine | PandaDoc</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<style>
+  /* ── PandaDoc Brand Tokens ── */
+  :root {
+    --pd-green: #248567;
+    --pd-green-dark: #136A50;
+    --pd-green-pastel: #E7F0EE;
+    --pd-coral: #FF826C;
+    --pd-coral-pastel: #FFEAE7;
+    --pd-amethyst: #A496FF;
+    --pd-sand: #B2A48C;
+    --pd-sand-pastel: #F8F5F3;
+    --pd-gold: #D5AD15;
+    --pd-black: #242424;
+    --pd-gray: #888888;
+    --pd-gray-light: #E7EBED;
+    --pd-gray-30: #F3F5F6;
+    --pd-white: #FFFFFF;
+    --pd-border: rgba(36, 36, 36, 0.1);
+    --pd-error: #E44E48;
+  }
+
+  /* ── Global Overrides ── */
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+  .reveal {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 28px;
+    color: var(--pd-black);
+  }
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    color: var(--pd-black);
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+  .reveal h1 { font-size: 2.2em; }
+  .reveal h2 { font-size: 1.6em; margin-bottom: 0.6em; }
+  .reveal h3 { font-size: 1.2em; color: var(--pd-green); }
+  .reveal p, .reveal li { line-height: 1.55; }
+  .reveal ul { list-style: none; padding-left: 0; }
+  .reveal ul li::before {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--pd-green);
+    border-radius: 50%;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+  .reveal .slides section { text-align: left; padding: 40px 50px; box-sizing: border-box; overflow: hidden; }
+  .reveal .slides section.center-slide { text-align: center; }
+
+  /* ── Slide Backgrounds ── */
+  .reveal .slides section[data-bg="white"] { background: var(--pd-white); }
+  .reveal .slides section[data-bg="sand"] { background: var(--pd-sand-pastel); }
+  .reveal .slides section[data-bg="green-pastel"] { background: var(--pd-green-pastel); }
+  .reveal .slides section[data-bg="gradient-hero"] {
+    background: linear-gradient(133deg, #F1E8E3 0%, #D6CEFF 50%, #A496FF 100%);
+  }
+  .reveal .slides section[data-bg="gradient-green"] {
+    background: linear-gradient(133deg, #EAE7DF 0%, #B9CDC7 65.75%, #A1C2B8 100%);
+  }
+  .reveal .slides section[data-bg="dark"] {
+    background: var(--pd-black);
+    color: var(--pd-white);
+  }
+  .reveal .slides section[data-bg="dark"] h1,
+  .reveal .slides section[data-bg="dark"] h2,
+  .reveal .slides section[data-bg="dark"] h3,
+  .reveal .slides section[data-bg="dark"] h4 {
+    color: var(--pd-white);
+  }
+
+  /* ── Reusable Components ── */
+  .tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.55em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .tag-green  { background: var(--pd-green-pastel); color: var(--pd-green); }
+  .tag-coral  { background: var(--pd-coral-pastel); color: #c0523e; }
+  .tag-purple { background: #EDEBFF; color: #6B5CE7; }
+  .tag-gold   { background: #FFF8DC; color: #9E7D00; }
+
+  .card {
+    background: var(--pd-white);
+    border: 1px solid var(--pd-border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: 0 0 10px rgba(36,36,36,0.08);
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 24px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .stat-box {
+    flex: 1;
+    min-width: 140px;
+    background: var(--pd-white);
+    border: 1px solid var(--pd-border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(36,36,36,0.06);
+  }
+  .stat-box .number {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--pd-green);
+    line-height: 1.1;
+  }
+  .stat-box .label {
+    font-size: 0.55em;
+    color: var(--pd-gray);
+    margin-top: 6px;
+    line-height: 1.3;
+  }
+
+  .tier-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.75em;
+  }
+  .tier-t1 { background: var(--pd-green-pastel); color: var(--pd-green-dark); }
+  .tier-t2 { background: #EDEBFF; color: #6B5CE7; }
+  .tier-t3 { background: var(--pd-gray-light); color: var(--pd-gray); }
+
+  /* Grid layouts */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+
+  /* Tables */
+  .reveal table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.65em;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--pd-border);
+  }
+  .reveal table th {
+    background: var(--pd-green-pastel);
+    color: var(--pd-black);
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--pd-green);
+  }
+  .reveal table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--pd-border);
+  }
+  .reveal table tr:nth-child(even) td {
+    background: var(--pd-gray-30);
+  }
+  .reveal table tr:last-child td { border-bottom: none; }
+
+  /* Chart containers */
+  .chart-container {
+    background: var(--pd-white);
+    border: 1px solid var(--pd-border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 0 10px rgba(36,36,36,0.06);
+  }
+
+  /* Bar charts */
+  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+  .bar-row { display: flex; align-items: center; gap: 8px; }
+  .bar-label { width: 100px; font-size: 0.55em; font-weight: 600; text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 20px; background: var(--pd-gray-light); border-radius: 6px; position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; font-size: 0.5em; font-weight: 700; color: white; transition: width 0.8s ease; }
+  .bar-value { font-size: 0.48em; font-weight: 600; color: var(--pd-gray); flex-shrink: 0; width: 50px; }
+  .bar-fill.green { background: var(--pd-green); }
+  .bar-fill.coral { background: var(--pd-coral); }
+  .bar-fill.purple { background: var(--pd-amethyst); }
+  .bar-fill.gold  { background: var(--pd-gold); }
+  .bar-fill.gray  { background: #C8CFD3; }
+  .bar-fill.red   { background: var(--pd-error); }
+
+  /* Process flow */
+  .process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  .process-step {
+    background: var(--pd-white);
+    border: 2px solid var(--pd-green);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+    font-size: 0.55em;
+    font-weight: 600;
+    min-width: 120px;
+    line-height: 1.3;
+  }
+  .process-step.active {
+    background: var(--pd-green);
+    color: white;
+  }
+  .process-arrow {
+    font-size: 1.2em;
+    color: var(--pd-green);
+    font-weight: 700;
+  }
+
+  /* Persona cards */
+  .persona-card {
+    background: var(--pd-white);
+    border: 1px solid var(--pd-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 0 8px rgba(36,36,36,0.06);
+  }
+  .persona-card h4 {
+    font-size: 0.7em;
+    margin: 0 0 6px 0;
+    color: var(--pd-green);
+  }
+  .persona-card p {
+    font-size: 0.52em;
+    color: var(--pd-gray);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .persona-card .role {
+    font-size: 0.58em;
+    color: var(--pd-gray);
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    gap: 0;
+    margin: 20px 0;
+  }
+  .timeline-block {
+    flex: 1;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 0.52em;
+  }
+  .timeline-block h4 {
+    font-size: 1.15em;
+    margin: 0 0 8px 0;
+  }
+  .timeline-block ul { margin: 0; padding: 0; }
+  .timeline-block ul li { margin-bottom: 4px; font-size: 0.95em; }
+  .timeline-block ul li::before { width: 5px; height: 5px; margin-right: 8px; }
+  .phase1 { background: var(--pd-green-pastel); margin-right: 8px; }
+  .phase1 h4 { color: var(--pd-green); }
+  .phase2 { background: #EDEBFF; margin-right: 8px; }
+  .phase2 h4 { color: #6B5CE7; }
+  .phase3 { background: var(--pd-coral-pastel); }
+  .phase3 h4 { color: #c0523e; }
+
+  /* Feedback loop diagram */
+  .loop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .loop-card {
+    background: var(--pd-white);
+    border: 1px solid var(--pd-border);
+    border-left: 4px solid var(--pd-green);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 0.5em;
+  }
+  .loop-card h4 {
+    font-size: 1.15em;
+    margin: 0 0 4px 0;
+    color: var(--pd-green);
+  }
+  .loop-card .freq {
+    font-size: 0.85em;
+    color: var(--pd-gray);
+    font-style: italic;
+  }
+
+  /* Subtitle */
+  .subtitle {
+    font-size: 0.65em;
+    color: var(--pd-gray);
+    margin-top: -8px;
+    margin-bottom: 20px;
+  }
+
+  /* Small text */
+  .small { font-size: 0.6em; color: var(--pd-gray); }
+  .fragment.visible { opacity: 1; }
+
+  /* Override reveal defaults */
+  .reveal .slide-number { color: var(--pd-gray); font-family: 'DM Sans', sans-serif; font-size: 14px; }
+  .reveal .controls .navigate-left, .reveal .controls .navigate-right { color: var(--pd-green); }
+  .reveal .progress span { background: var(--pd-green); }
+  .reveal .progress { height: 4px; }
+
+  /* Tier comparison table */
+  .tier-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .tier-col {
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 0.55em;
+  }
+  .tier-col h4 { margin: 0 0 10px 0; font-size: 1.2em; }
+  .tier-col ul { margin: 0; padding: 0; }
+  .tier-col ul li { margin-bottom: 5px; }
+  .tier-col.t1 { background: var(--pd-green-pastel); border: 2px solid var(--pd-green); }
+  .tier-col.t1 h4 { color: var(--pd-green-dark); }
+  .tier-col.t2 { background: #EDEBFF; border: 2px solid var(--pd-amethyst); }
+  .tier-col.t2 h4 { color: #6B5CE7; }
+  .tier-col.t3 { background: var(--pd-gray-light); border: 2px solid #C8CFD3; }
+  .tier-col.t3 h4 { color: var(--pd-gray); }
+
+  /* emphasis */
+  .highlight { color: var(--pd-green); font-weight: 700; }
+  .highlight-coral { color: var(--pd-coral); font-weight: 700; }
+  .highlight-purple { color: var(--pd-amethyst); font-weight: 700; }
+
+  /* SVG chart styles */
+  svg text { font-family: 'DM Sans', sans-serif; }
+
+  /* Donut chart legend */
+  .donut-legend { font-size: 0.55em; margin-top: 12px; }
+  .donut-legend span { display: inline-flex; align-items: center; margin-right: 16px; }
+  .donut-legend .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+
+  /* Alice intro */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .about-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .avatar-circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(133deg, #E7F0EE 0%, #B9CDC7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    font-weight: 700;
+    color: var(--pd-green-dark);
+    margin-bottom: 16px;
+    border: 3px solid var(--pd-green);
+  }
+  .about-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--pd-black);
+  }
+  .about-role {
+    font-size: 0.6em;
+    color: var(--pd-gray);
+  }
+
+  /* Scoring weight visual */
+  .weight-bar {
+    display: flex;
+    height: 36px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 16px 0;
+    font-size: 0.5em;
+    font-weight: 600;
+    color: white;
+  }
+  .weight-bar > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.6s ease;
+  }
+
+  /* Pipeline visual */
+  .pipeline-funnel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin: 16px 0;
+  }
+  .funnel-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 0.6em;
+    color: white;
+    text-align: center;
+  }
+
+  /* System architecture */
+  .arch-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .arch-block {
+    flex: 1;
+    background: var(--pd-white);
+    border: 2px solid var(--pd-green);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .arch-block h4 {
+    font-size: 0.95em;
+    margin: 0 0 8px 0;
+    color: var(--pd-green);
+  }
+  .arch-block p {
+    font-size: 0.72em;
+    color: var(--pd-gray);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .arch-block.highlight-block {
+    background: var(--pd-green);
+    color: white;
+    border-color: var(--pd-green-dark);
+  }
+  .arch-block.highlight-block h4 { color: white; }
+  .arch-block.highlight-block p { color: rgba(255,255,255,0.8); }
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+    color: var(--pd-green);
+    font-weight: 700;
+  }
+
+  /* Key insight callout */
+  .insight-box {
+    background: var(--pd-coral-pastel);
+    border-left: 4px solid var(--pd-coral);
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 0.65em;
+    margin: 16px 0;
+  }
+  .insight-box strong { color: #c0523e; }
+
+  .insight-box-green {
+    background: var(--pd-green-pastel);
+    border-left: 4px solid var(--pd-green);
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 0.65em;
+    margin: 16px 0;
+  }
+  .insight-box-green strong { color: var(--pd-green-dark); }
+
+  /* Scoring dimension pill */
+  .dim-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .dim-pill {
+    background: var(--pd-white);
+    border: 1px solid var(--pd-border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+    box-shadow: 0 0 6px rgba(36,36,36,0.06);
+    flex: 1;
+    min-width: 100px;
+  }
+  .dim-pill .pts {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--pd-green);
+  }
+  .dim-pill .dim-name {
+    font-size: 0.55em;
+    color: var(--pd-gray);
+    margin-top: 2px;
+  }
+  .dim-pill .dim-why {
+    font-size: 0.42em;
+    color: var(--pd-gray);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* Logo placeholder */
+  .pd-logo {
+    font-weight: 700;
+    font-size: 0.7em;
+    color: var(--pd-green);
+    letter-spacing: -0.02em;
+  }
+  .pd-logo::before {
+    content: '🐼 ';
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 1 — Title -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="dark" class="center-slide" style="background: var(--pd-green);">
+  <div style="padding: 40px 0;">
+    <p class="pd-logo" style="margin-bottom: 24px; color: white;">PandaDoc</p>
+    <h1 style="font-size: 2em; margin-bottom: 12px; color: white;">Building an AI-Driven<br>ABM Engine That Scales</h1>
+    <p style="font-size: 0.7em; color: rgba(255,255,255,0.7); margin-bottom: 32px;">
+      Growth Marketing Generalist — Take-Home Exercise
+    </p>
+    <p style="font-size: 0.8em; font-weight: 600; color: white;">Alice Doglioli</p>
+    <p style="font-size: 0.55em; color: rgba(255,255,255,0.6);">March 2026</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 2 — About Alice -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="white">
+  <span class="tag tag-green">About Me</span>
+  <h2>Hi, I'm Alice</h2>
+  <div>
+      <ul style="font-size: 0.72em; line-height: 1.8;">
+        <li><strong>Growth Marketing Specialist at Concord</strong> — lifecycle marketing, website optimization, event strategy, and AI Architect</li>
+        <li><strong>Finance background</strong> — credit analysis at Citibank, financial modeling at P&G</li>
+        <li><strong>HEC Paris</strong> (Master in Management) & exchange semester at <strong>UT McCombs</strong> (MBA)</li>
+        <li><strong>AI Builder</strong> — Claude Code enthusiast and driving adoption of AI tools across teams</li>
+      </ul>
+      <div class="insight-box-green" style="margin-top: 16px;">
+        <strong>What you'll see today:</strong> AI agents that analyze 150 leads, derive scoring weights, generate messaging, plan channels and a quarterly activation plan — with a built-in feedback engine that improves the model as new data comes in.
+      </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 3 — How I Built This -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="sand">
+  <span class="tag tag-purple">Process</span>
+  <h2>How I Built This</h2>
+  <p class="subtitle">Claude Code inside Cursor</p>
+
+  <div style="text-align: left; max-width: 80%; margin: 0;">
+    <h4 style="color: var(--pd-green); font-size: 0.7em; margin: 0 0 10px 0;">The Workflow</h4>
+    <ul style="font-size: 0.58em; line-height: 1.7;">
+      <li><strong>Step 1:</strong> Feed assignment, leads data, ABM resources, research on PandaDoc, and PandaDoc style guide</li>
+      <li><strong>Step 2:</strong> Plan Mode — architect the 4-agent system by iterating on agent architecture & marketing strategy</li>
+      <li><strong>Step 3:</strong> Validate outputs</li>
+      <li><strong>Step 4:</strong> Run test on sample leads</li>
+    </ul>
+  </div>
+
+  <div style="text-align: left; max-width: 80%; margin: 20px 0 0 0;">
+    <h4 style="color: var(--pd-green); font-size: 0.7em; margin: 0 0 10px 0;">Assumptions</h4>
+    <ul style="font-size: 0.58em; line-height: 1.7;">
+      <li>Lead lists are provided, not built by the system</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 4 — System Architecture -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="white">
+  <span class="tag tag-coral">Architecture</span>
+  <h2>The System: A 4-Agent Pipeline</h2>
+  <p class="subtitle">A repeatable engine with two operating modes.</p>
+
+  <div class="arch-flow">
+    <div class="arch-block">
+      <h4>Agent 1</h4>
+      <p><strong>Account Tiering</strong></p>
+    </div>
+    <div class="arch-block">
+      <h4>Agent 2</h4>
+      <p><strong>Persona & Messaging</strong></p>
+    </div>
+    <div class="arch-block">
+      <h4>Agent 3</h4>
+      <p><strong>Channel Strategy & Quarterly Plan</strong></p>
+    </div>
+    <div class="arch-block">
+      <h4>Agent 4</h4>
+      <p><strong>Recalibration Engine</strong></p>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 16px; gap: 20px; align-items: stretch;">
+
+    <!-- Left: Train / Recalibrate -->
+    <div class="card" style="border-left: 4px solid var(--pd-green); padding: 16px 18px;">
+      <h4 style="font-size: 0.7em; color: var(--pd-green); margin: 0 0 10px 0;">Train Mode &mdash; <code style="background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.85em;">/recalibrate</code></h4>
+      <div style="font-size: 0.55em; line-height: 1.7; color: var(--pd-gray);">
+        <div style="display: flex; gap: 8px; margin-bottom: 6px;">
+          <div style="background: var(--pd-green); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.85em;">1</div>
+          <div>Export funnel data from CRM</div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-bottom: 6px;">
+          <div style="background: var(--pd-green); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.85em;">2</div>
+          <div>All 4 agents re-run: new weights, tiers, personas, channels</div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-bottom: 6px;">
+          <div style="background: var(--pd-green); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.85em;">3</div>
+          <div>Before/after diff report: what changed and why</div>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <div style="background: var(--pd-green); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.85em;">4</div>
+          <div>Updated model saved &mdash; sharper weights each cycle</div>
+        </div>
+      </div>
+      <div style="margin-top: 12px; padding: 8px 12px; background: var(--pd-green-pastel); border-radius: 6px;">
+        <p style="font-size: 0.48em; margin: 0; color: var(--pd-gray);"><strong style="color: var(--pd-green);">What gets better:</strong> Scoring weights &bull; Tier assignments &bull; Channel insights &bull; Persona conversion patterns &bull; Messaging theme effectiveness &bull; Engagement signal analysis</p>
+      </div>
+    </div>
+
+    <!-- Right: Score -->
+    <div class="card" style="border-left: 4px solid var(--pd-amethyst); padding: 16px 18px; display: flex; flex-direction: column;">
+      <h4 style="font-size: 0.7em; color: #6B5CE7; margin: 0 0 10px 0;">Score Mode &mdash; <code style="background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 4px; font-size: 0.85em;">/score</code></h4>
+      <div style="font-size: 0.55em; line-height: 1.7; color: var(--pd-gray);">
+        <div style="display: flex; gap: 8px; margin-bottom: 6px;">
+          <div style="background: var(--pd-amethyst); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.85em;">1</div>
+          <div>Prepare a CSV of target accounts</div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-bottom: 6px;">
+          <div style="background: var(--pd-amethyst); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.85em;">2</div>
+          <div>Engine scores each account using trained weights (0&ndash;100)</div>
+        </div>
+        <div style="display: flex; gap: 8px; margin-bottom: 6px;">
+          <div style="background: var(--pd-amethyst); color: white; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.85em;">3</div>
+          <div>Enriched CSV: tiers, personas, messaging angles, channels</div>
+        </div>
+      </div>
+      <div style="flex-grow: 1;"></div>
+      <div style="margin-top: 12px; padding: 8px 12px; background: rgba(164, 150, 255, 0.12); border-radius: 6px;">
+        <p style="font-size: 0.48em; margin: 0; color: var(--pd-gray);"><strong style="color: var(--pd-amethyst);">Output per account:</strong> Score &bull; Tier &bull; Persona &bull; Missing personas &bull; Messaging angle &bull; Recommended content &bull; Recommended channels</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size: 0.5em; color: var(--pd-gray); margin-top: 14px; text-align: left;">
+    <strong style="color: var(--pd-green);">Tool stack:</strong> Claude Code &bull; HubSpot/Salesforce CRM &bull; Paid Social (LinkedIn, Meta, Reddit, Quora, TikTok) &bull; HeyReach
+  </p>
+</section>
+
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 6 — Section Divider: Deliverable 1 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="dark" class="center-slide">
+  <span class="tag" style="background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);">Deliverable 1</span>
+  <h1 style="font-size: 2.2em;">Account Tiering Model</h1>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 7 — Tiering Criteria -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="white">
+  <span class="tag tag-green">Deliverable 1</span>
+  <h2>Tiering Criteria: 5 Signals, 100 Points</h2>
+
+  <!-- Stacked weight bar -->
+  <div class="weight-bar" style="font-size: 0.55em;">
+    <div style="width: 30%; background: var(--pd-green);">Industry 30</div>
+    <div style="width: 20%; background: var(--pd-amethyst);">CRM 20</div>
+    <div style="width: 20%; background: var(--pd-coral);">Revenue 20</div>
+    <div style="width: 15%; background: var(--pd-gold);">Employees 15</div>
+    <div style="width: 15%; background: var(--pd-sand);">Country 15</div>
+  </div>
+
+  <div class="dim-pills">
+    <div class="dim-pill">
+      <div class="pts">30</div>
+      <div class="dim-name">Industry</div>
+      <div class="dim-why"><strong>Why:</strong> Highest expected value. HR Tech: 67% conversion &times; $30K ACV = $20K EV. Bottom industries under $1K EV.</div>
+    </div>
+    <div class="dim-pill">
+      <div class="pts">20</div>
+      <div class="dim-name">Current CRM</div>
+      <div class="dim-why"><strong>Why:</strong> Reveals displacement opportunity. Copper CRM ($6.4K EV) and Pipedrive ($6.2K EV) lead. Salesforce and Freshsales under $1K EV.</div>
+    </div>
+    <div class="dim-pill">
+      <div class="pts">20</div>
+      <div class="dim-name">Revenue Band</div>
+      <div class="dim-why"><strong>Why:</strong> Proxy for deal size and buying capacity. $25M–$100M has highest EV ($4.9K) — matches PandaDoc's mid-market sweet spot.</div>
+    </div>
+    <div class="dim-pill">
+      <div class="pts">15</div>
+      <div class="dim-name">Employee Band</div>
+      <div class="dim-why"><strong>Why:</strong> Signals org complexity. 51–200 employees is the sweet spot — big enough to need workflow, small enough for fast deals.</div>
+    </div>
+    <div class="dim-pill">
+      <div class="pts">15</div>
+      <div class="dim-name">Country</div>
+      <div class="dim-why"><strong>Why:</strong> Geographic market readiness. US/UK outperform continental Europe — reflects PandaDoc's market maturity by region.</div>
+    </div>
+  </div>
+
+  <div class="insight-box-green">
+    <strong>How were these signals chosen?</strong> Each firmographic column was tested for expected value (conversion rate &times; avg ACV). Dimensions with the widest spread get the most points. Behavioral signals are tracked separately to guide messaging, not scoring.
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 8 — What the Data Reveals -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="sand">
+  <span class="tag tag-green">Deliverable 1</span>
+  <h2>What the Data Reveals</h2>
+  <p class="subtitle">Expected value (S1 rate &times; avg ACV) across the 150-lead dataset — this is how the scores are derived</p>
+
+  <!-- Row 1: Industry, CRM, Revenue -->
+  <div class="grid-3" style="gap: 16px; margin-bottom: 16px;">
+    <!-- Industry — max EV $20,067 -->
+    <div class="chart-container" style="padding: 12px 16px;">
+      <h4 style="font-size: 0.55em; color: var(--pd-green); margin: 0 0 8px 0;">Industry (30 pts)</h4>
+      <div class="bar-chart" style="gap: 4px;">
+        <div class="bar-row"><div class="bar-label">HR Tech</div><div class="bar-track"><div class="bar-fill green" style="width: 100%;"></div></div><div class="bar-value">$20K</div></div>
+        <div class="bar-row"><div class="bar-label">Legal</div><div class="bar-track"><div class="bar-fill green" style="width: 43%;"></div></div><div class="bar-value">$8.7K</div></div>
+        <div class="bar-row"><div class="bar-label">Logistics</div><div class="bar-track"><div class="bar-fill green" style="width: 29%;"></div></div><div class="bar-value">$5.7K</div></div>
+        <div class="bar-row"><div class="bar-label">Fin. Services</div><div class="bar-track"><div class="bar-fill green" style="width: 28%;"></div></div><div class="bar-value">$5.5K</div></div>
+        <div class="bar-row"><div class="bar-label">Construction</div><div class="bar-track"><div class="bar-fill gray" style="width: 18%;"></div></div><div class="bar-value">$3.6K</div></div>
+        <div class="bar-row"><div class="bar-label">Real Estate</div><div class="bar-track"><div class="bar-fill gray" style="width: 15%;"></div></div><div class="bar-value">$3K</div></div>
+        <div class="bar-row"><div class="bar-label">Insurance</div><div class="bar-track"><div class="bar-fill gray" style="width: 2%;"></div></div><div class="bar-value">$0</div></div>
+      </div>
+    </div>
+
+    <!-- CRM — max EV $6,431 -->
+    <div class="chart-container" style="padding: 12px 16px;">
+      <h4 style="font-size: 0.55em; color: var(--pd-green); margin: 0 0 8px 0;">Current CRM (20 pts)</h4>
+      <div class="bar-chart" style="gap: 4px;">
+        <div class="bar-row"><div class="bar-label">Copper</div><div class="bar-track"><div class="bar-fill green" style="width: 100%;"></div></div><div class="bar-value">$6.4K</div></div>
+        <div class="bar-row"><div class="bar-label">Pipedrive</div><div class="bar-track"><div class="bar-fill green" style="width: 96%;"></div></div><div class="bar-value">$6.2K</div></div>
+        <div class="bar-row"><div class="bar-label">Monday</div><div class="bar-track"><div class="bar-fill green" style="width: 92%;"></div></div><div class="bar-value">$5.9K</div></div>
+        <div class="bar-row"><div class="bar-label">Zoho</div><div class="bar-track"><div class="bar-fill green" style="width: 71%;"></div></div><div class="bar-value">$4.5K</div></div>
+        <div class="bar-row"><div class="bar-label">None/Sheets</div><div class="bar-track"><div class="bar-fill gray" style="width: 36%;"></div></div><div class="bar-value">$2.3K</div></div>
+        <div class="bar-row"><div class="bar-label">Salesforce</div><div class="bar-track"><div class="bar-fill red" style="width: 14%;"></div></div><div class="bar-value">$0.9K</div></div>
+        <div class="bar-row"><div class="bar-label">Freshsales</div><div class="bar-track"><div class="bar-fill red" style="width: 3%;"></div></div><div class="bar-value">$0.2K</div></div>
+      </div>
+    </div>
+
+    <!-- Revenue — max EV $4,902 -->
+    <div class="chart-container" style="padding: 12px 16px;">
+      <h4 style="font-size: 0.55em; color: var(--pd-green); margin: 0 0 8px 0;">Revenue Band (20 pts)</h4>
+      <div class="bar-chart" style="gap: 4px;">
+        <div class="bar-row"><div class="bar-label">$25M-$100M</div><div class="bar-track"><div class="bar-fill green" style="width: 100%;"></div></div><div class="bar-value">$4.9K</div></div>
+        <div class="bar-row"><div class="bar-label">$100M-$500M</div><div class="bar-track"><div class="bar-fill gray" style="width: 53%;"></div></div><div class="bar-value">$2.6K</div></div>
+        <div class="bar-row"><div class="bar-label">$5M-$25M</div><div class="bar-track"><div class="bar-fill gray" style="width: 45%;"></div></div><div class="bar-value">$2.2K</div></div>
+        <div class="bar-row"><div class="bar-label">&lt; $5M</div><div class="bar-track"><div class="bar-fill gray" style="width: 21%;"></div></div><div class="bar-value">$1K</div></div>
+        <div class="bar-row"><div class="bar-label">$500M+</div><div class="bar-track"><div class="bar-fill gray" style="width: 8%;"></div></div><div class="bar-value">$0.4K</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Employees, Country -->
+  <div class="grid-2" style="gap: 16px; max-width: 66%; margin: 0 auto;">
+    <!-- Employees — max EV $3,823 -->
+    <div class="chart-container" style="padding: 12px 16px;">
+      <h4 style="font-size: 0.55em; color: var(--pd-green); margin: 0 0 8px 0;">Employee Band (15 pts)</h4>
+      <div class="bar-chart" style="gap: 4px;">
+        <div class="bar-row"><div class="bar-label">51-200</div><div class="bar-track"><div class="bar-fill green" style="width: 100%;"></div></div><div class="bar-value">$3.8K</div></div>
+        <div class="bar-row"><div class="bar-label">201-500</div><div class="bar-track"><div class="bar-fill gray" style="width: 82%;"></div></div><div class="bar-value">$3.1K</div></div>
+        <div class="bar-row"><div class="bar-label">501-1,000</div><div class="bar-track"><div class="bar-fill gray" style="width: 63%;"></div></div><div class="bar-value">$2.4K</div></div>
+      </div>
+    </div>
+
+    <!-- Country — max EV $4,191 -->
+    <div class="chart-container" style="padding: 12px 16px;">
+      <h4 style="font-size: 0.55em; color: var(--pd-green); margin: 0 0 8px 0;">Country (15 pts)</h4>
+      <div class="bar-chart" style="gap: 4px;">
+        <div class="bar-row"><div class="bar-label">US</div><div class="bar-track"><div class="bar-fill green" style="width: 100%;"></div></div><div class="bar-value">$4.2K</div></div>
+        <div class="bar-row"><div class="bar-label">Australia</div><div class="bar-track"><div class="bar-fill green" style="width: 84%;"></div></div><div class="bar-value">$3.5K</div></div>
+        <div class="bar-row"><div class="bar-label">Germany</div><div class="bar-track"><div class="bar-fill green" style="width: 81%;"></div></div><div class="bar-value">$3.4K</div></div>
+        <div class="bar-row"><div class="bar-label">UK</div><div class="bar-track"><div class="bar-fill gray" style="width: 51%;"></div></div><div class="bar-value">$2.2K</div></div>
+        <div class="bar-row"><div class="bar-label">Canada</div><div class="bar-track"><div class="bar-fill gray" style="width: 36%;"></div></div><div class="bar-value">$1.5K</div></div>
+        <div class="bar-row"><div class="bar-label">France</div><div class="bar-track"><div class="bar-fill gray" style="width: 2%;"></div></div><div class="bar-value">$0</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 9 — Assigning Accounts to Tiers -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="white">
+  <span class="tag tag-green">Deliverable 1</span>
+  <h2>Assigning 150 Accounts to Tiers</h2>
+  <p class="subtitle">Every account scored on 5 dimensions, then assigned a tier and play type</p>
+
+  <div class="tier-compare">
+    <div class="tier-col t1">
+      <h4><span class="tier-badge tier-t1">T1</span> Strategic (Score &ge; 60)</h4>
+      <div style="text-align: center; margin: 10px 0;">
+        <span style="font-size: 2.2em; font-weight: 700; color: var(--pd-green-dark);">21</span>
+        <span style="font-size: 0.9em; color: var(--pd-gray);"> accounts</span>
+      </div>
+      <ul>
+        <li><strong>43% S1 rate</strong></li>
+        <li>$236.9K pipeline</li>
+        <li>1:1 personalized plays</li>
+        <li>Multi-threaded outreach</li>
+        <li>Custom content per account</li>
+      </ul>
+    </div>
+    <div class="tier-col t2">
+      <h4><span class="tier-badge tier-t2">T2</span> Cluster (Score 40-59)</h4>
+      <div style="text-align: center; margin: 10px 0;">
+        <span style="font-size: 2.2em; font-weight: 700; color: #6B5CE7;">77</span>
+        <span style="font-size: 0.9em; color: var(--pd-gray);"> accounts</span>
+      </div>
+      <ul>
+        <li><strong>27% S1 rate</strong></li>
+        <li>$230.0K pipeline</li>
+        <li>1:Few cluster plays</li>
+        <li>Industry/CRM grouping</li>
+        <li>Templated personalization</li>
+      </ul>
+    </div>
+    <div class="tier-col t3">
+      <h4><span class="tier-badge tier-t3">T3</span> Programmatic (Score &lt; 40)</h4>
+      <div style="text-align: center; margin: 10px 0;">
+        <span style="font-size: 2.2em; font-weight: 700; color: var(--pd-gray);">52</span>
+        <span style="font-size: 0.9em; color: var(--pd-gray);"> accounts</span>
+      </div>
+      <ul>
+        <li><strong>6% S1 rate</strong></li>
+        <li>$20.6K pipeline</li>
+        <li>1:Many automated plays</li>
+        <li>Nurture-only cadence</li>
+        <li>Generic content</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <strong>The math is stark:</strong> T1 is 14% of accounts but drives 49% of pipeline at 43% conversion. T3 is 35% of accounts but only 4% of pipeline.  </div>
+  <p style="font-size: 0.65em; color: var(--pd-gray); text-align: left; margin-top: 16px;">See tiered_accounts.csv</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 11 — Section Divider: Deliverable 2 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="dark" class="center-slide">
+  <span class="tag" style="background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);">Deliverable 2</span>
+  <h1 style="font-size: 2.2em;">Buyer Committee<br>Messaging Framework</h1>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 12 — Buyer Committee Map -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="white">
+  <span class="tag tag-purple">Deliverable 2</span>
+  <h2>The Buying Committee</h2>
+  <p class="subtitle">6 personas derived from 150 leads — conversion rates and pain points from the data</p>
+
+  <div class="grid-3">
+    <div class="persona-card" style="border-top: 3px solid var(--pd-green);">
+      <h4>Champion / User Buyer <span style="font-size: 0.6em; color: var(--pd-green); font-weight: 700;">25% S1</span></h4>
+      <div class="role">44 leads | VP of Sales, CRO, Director of Sales</div>
+      <p><strong>Top pain (from notes):</strong> Cost of current tools, slow proposal turnaround, no visibility into deal status</p>
+      <p style="margin-top: 6px;"><strong>Message:</strong> "Cut proposal time from hours to minutes"</p>
+    </div>
+    <div class="persona-card" style="border-top: 3px solid var(--pd-amethyst);">
+      <h4>Economic Buyer <span style="font-size: 0.6em; color: var(--pd-amethyst); font-weight: 700;">26% S1</span></h4>
+      <div class="role">43 leads | CFO, VP of Finance, President</div>
+      <p><strong>Top pain (from notes):</strong> Cost/ROI concerns, CRM integration needs, no visibility into deal status</p>
+      <p style="margin-top: 6px;"><strong>Message:</strong> "One platform replacing 3 tools = faster deals + lower cost"</p>
+    </div>
+    <div class="persona-card" style="border-top: 3px solid var(--pd-coral);">
+      <h4>Legal / Compliance <span style="font-size: 0.6em; color: var(--pd-coral); font-weight: 700;">5% S1</span></h4>
+      <div class="role">19 leads | General Counsel, Legal Ops, Compliance Officer</div>
+      <p><strong>Top pain (from notes):</strong> Contract errors, version control, audit trail gaps</p>
+      <p style="margin-top: 6px;"><strong>Message:</strong> "SOC 2 certified, full audit trail, clause locking"</p>
+    </div>
+    <div class="persona-card" style="border-top: 3px solid var(--pd-gold);">
+      <h4>Technical Evaluator <span style="font-size: 0.6em; color: var(--pd-gold); font-weight: 700;">23% S1</span></h4>
+      <div class="role">22 leads | VP of Operations, Operations Manager, Operations Analyst</div>
+      <p><strong>Top pain (from notes):</strong> Slow proposal turnaround, cost of current tools, manual document processes</p>
+      <p style="margin-top: 6px;"><strong>Message:</strong> "Native Salesforce/HubSpot sync, open API, enterprise SSO"</p>
+    </div>
+    <div class="persona-card" style="border-top: 3px solid var(--pd-sand);">
+      <h4>Executive Sponsor <span style="font-size: 0.6em; color: var(--pd-sand); font-weight: 700;">20% S1</span></h4>
+      <div class="role">10 leads | COO, CMO</div>
+      <p><strong>Top pain (from notes):</strong> Slow proposals, manual processes, cost of current tools</p>
+      <p style="margin-top: 6px;"><strong>Message:</strong> "Digital-first document workflow = competitive moat"</p>
+    </div>
+    <div class="persona-card" style="border-top: 3px solid #64B5F6;">
+      <h4>Marketing / Other <span style="font-size: 0.6em; color: #64B5F6; font-weight: 700;">25% S1</span></h4>
+      <div class="role">12 leads | Marketing Manager, Marketing Specialist</div>
+      <p><strong>Top pain (from notes):</strong> Slow proposal turnaround, CRM integration needs, no document visibility</p>
+      <p style="margin-top: 6px;"><strong>Message:</strong> "Branded templates, content library, seamless handoff"</p>
+    </div>
+  </div>
+
+  <div class="insight-box" style="margin-top: 16px;">
+    <strong>Critical finding from data:</strong> Legal has the lowest S1 rate (5%) but the highest avg ACV ($55K) when they do convert. Sales notes repeatedly flag Legal as the #1 blocker. The ABM play must multi-thread Legal <em>from day one</em>, not as an afterthought.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 13 — Messaging by Tier -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="sand">
+  <span class="tag tag-purple">Deliverable 2</span>
+  <h2>Messaging Adapts by Tier</h2>
+  <p class="subtitle">Same personas, different depth of personalization</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Dimension</th>
+        <th style="width: 27%;"><span class="tier-badge tier-t1">T1</span> Strategic</th>
+        <th style="width: 27%;"><span class="tier-badge tier-t2">T2</span> Cluster</th>
+        <th style="width: 27%;"><span class="tier-badge tier-t3">T3</span> Programmatic</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Personalization</strong></td>
+        <td>Account-specific pain points, named stakeholders, custom ROI calc</td>
+        <td>Industry messaging</td>
+        <td>Generic persona messaging</td>
+      </tr>
+      <tr>
+        <td><strong>Content</strong></td>
+        <td>Custom 1-pager, personalized demo, exec briefing</td>
+        <td>Industry case study, webinar invite, ROI template</td>
+        <td>Blog posts, ebooks, automated nurture drip</td>
+      </tr>
+      <tr>
+        <td><strong>Personas targeted</strong></td>
+        <td>All 6 — full committee multi-threading</td>
+        <td>Champion + Economic Buyer + Legal</td>
+        <td>Champion only (nurture until engagement)</td>
+      </tr>
+      <tr>
+        <td><strong>Cadence</strong></td>
+        <td>3-5 touches/week across personas</td>
+        <td>2-3 touches/week</td>
+        <td>1 touch/week (automated)</td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 14 — Section Divider: Deliverable 3 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="dark" class="center-slide">
+  <span class="tag" style="background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9);">Deliverable 3</span>
+  <h1 style="font-size: 2.2em;">Quarterly<br>Activation Plan</h1>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 15 — Channel Performance -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="white">
+  <span class="tag tag-coral">Deliverable 3</span>
+  <h2>Channel Intelligence</h2>
+  <p class="subtitle">Data-driven channel strategy — double down on what works, cut what doesn't</p>
+
+  <div class="grid-2">
+    <div class="chart-container" style="padding: 12px 16px;">
+      <h4 style="font-size: 0.55em; color: var(--pd-green); margin: 0 0 8px 0;">S1 Rate by Channel</h4>
+      <div class="bar-chart" style="gap: 5px;">
+        <div class="bar-row"><div class="bar-label">Paid Social</div><div class="bar-track" style="height: 20px;"><div class="bar-fill green" style="width: 86%;">43%</div></div></div>
+        <div class="bar-row"><div class="bar-label">AppExchange</div><div class="bar-track" style="height: 20px;"><div class="bar-fill green" style="width: 80%;">40%</div></div></div>
+        <div class="bar-row"><div class="bar-label">Inbound</div><div class="bar-track" style="height: 20px;"><div class="bar-fill green" style="width: 66%;">33%</div></div></div>
+        <div class="bar-row"><div class="bar-label">Webinar</div><div class="bar-track" style="height: 20px;"><div class="bar-fill purple" style="width: 50%;">25%</div></div></div>
+        <div class="bar-row"><div class="bar-label">Outbound</div><div class="bar-track" style="height: 20px;"><div class="bar-fill gray" style="width: 36%;">18%</div></div></div>
+        <div class="bar-row"><div class="bar-label">Partner</div><div class="bar-track" style="height: 20px;"><div class="bar-fill gray" style="width: 16%;">8%</div></div></div>
+        <div class="bar-row"><div class="bar-label">Paid Search</div><div class="bar-track" style="height: 20px;"><div class="bar-fill red" style="width: 3%;"></div><span style="font-size: 0.55em; color: var(--pd-error); margin-left: 8px; font-weight: 700;">0%</span></div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="margin-bottom: 8px; padding: 10px 14px; border-left: 4px solid var(--pd-green);">
+        <h4 style="font-size: 0.55em; color: var(--pd-green); margin: 0 0 4px 0;">Scale: Paid Social (LinkedIn, Meta, Reddit, Quora, TikTok)</h4>
+        <p style="font-size: 0.45em; color: var(--pd-gray); margin: 0;">
+          43% S1 rate. Primary engine. LinkedIn matched audiences for T1, Meta retargeting + lookalikes for T2, Reddit/Quora community targeting, TikTok short-form video.
+        </p>
+      </div>
+      <div class="card" style="margin-bottom: 8px; padding: 10px 14px; border-left: 4px solid var(--pd-amethyst);">
+        <h4 style="font-size: 0.55em; color: #6B5CE7; margin: 0 0 4px 0;">Invest: Inbound + AppExchange</h4>
+        <p style="font-size: 0.45em; color: var(--pd-gray); margin: 0;">
+          33-40% S1 rate. High-intent channels. Optimize landing pages for /integrations (strongest engagement signal: +12% lift). Improve AppExchange listing.
+        </p>
+      </div>
+      <div class="card" style="margin-bottom: 8px; padding: 10px 14px; border-left: 4px solid var(--pd-gold);">
+        <h4 style="font-size: 0.55em; color: #9E7D00; margin: 0 0 4px 0;">Focus: Outbound (T1 only)</h4>
+        <p style="font-size: 0.45em; color: var(--pd-gray); margin: 0;">
+          18% S1 overall, but use it surgically for T1 multi-threading. HeyReach for LinkedIn sequences. Not a volume play.
+        </p>
+      </div>
+      <div class="card" style="margin-bottom: 8px; padding: 10px 14px; border-left: 4px solid var(--pd-amethyst);">
+        <h4 style="font-size: 0.55em; color: var(--pd-amethyst); margin: 0 0 4px 0;">Invest: Webinars (25% S1)</h4>
+        <p style="font-size: 0.45em; color: var(--pd-gray); margin: 0;">
+          8 leads, 2 S1 conversions. Use for T2 cluster plays — industry-specific webinars. Doubles as content for nurture sequences.
+        </p>
+      </div>
+      <div class="card" style="padding: 10px 14px; border-left: 4px solid var(--pd-error);">
+        <h4 style="font-size: 0.55em; color: var(--pd-error); margin: 0 0 4px 0;">Pause: Paid Search (0% S1)</h4>
+        <p style="font-size: 0.45em; color: var(--pd-gray); margin: 0;">
+          Zero conversions in dataset. Reallocate budget to paid social channels immediately.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 17 — 13-Week Plan -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="white">
+  <span class="tag tag-coral">Deliverable 3</span>
+  <h2>13-Week Quarterly Plan</h2>
+  <p class="subtitle">Three phases: Launch, Accelerate, Convert</p>
+
+  <div class="timeline">
+    <div class="timeline-block phase1">
+      <h4>Weeks 1-4: Launch & Engage</h4>
+      <ul>
+        <li>Activate paid social (LinkedIn, Meta, Reddit, Quora, TikTok) for all tiers</li>
+        <li>Launch T1 multi-thread outreach (HeyReach)</li>
+        <li>Deploy T2 cluster email sequences</li>
+        <li>Begin T3 automated nurture</li>
+        <li>Establish baseline engagement metrics</li>
+        <li>First content drops: case studies + ROI guides</li>
+      </ul>
+      <div style="margin-top: 8px; padding: 6px 10px; background: rgba(36,133,103,0.15); border-radius: 6px;">
+        <strong>Goal:</strong> All accounts in motion. T1 accounts aware of PandaDoc.
+      </div>
+    </div>
+    <div class="timeline-block phase2">
+      <h4>Weeks 5-9: Accelerate & Optimize</h4>
+      <ul>
+        <li>Double down on top-performing ad segments</li>
+        <li>Scale paid social for best-converting clusters</li>
+        <li>Engage Legal personas at all T1 accounts</li>
+        <li>Launch industry-specific webinar series</li>
+        <li>Push 50%+ of T1 to demo stage</li>
+        <li>Mid-quarter check: recalibrate messaging based on results</li>
+      </ul>
+      <div style="margin-top: 8px; padding: 6px 10px; background: rgba(107,92,231,0.15); border-radius: 6px;">
+        <strong>Goal:</strong> T1 in pipeline. T2 clusters engaged. Cut underperformers.
+      </div>
+    </div>
+    <div class="timeline-block phase3">
+      <h4>Weeks 10-13: Convert & Learn</h4>
+      <ul>
+        <li>Convert T1 pipeline to revenue</li>
+        <li>Close T2 warm opportunities</li>
+        <li>Document every win/loss with reasons</li>
+        <li>Run <code style="font-size: 0.9em;">/recalibrate</code> with Q1 outcome data</li>
+        <li>Review before/after diff, update strategy for Q2</li>
+        <li>Execute tier mobility for next quarter</li>
+      </ul>
+      <div style="margin-top: 8px; padding: 6px 10px; background: rgba(192,82,62,0.15); border-radius: 6px;">
+        <strong>Goal:</strong> Revenue in. Model improved. Q2 ready to go.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE — Tier x Plan Matrix -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="sand">
+  <span class="tag tag-coral">Deliverable 3</span>
+  <h2>How the Plan Differs by Tier</h2>
+  <p class="subtitle">Same timeline. Different intensity. Different channels.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th><span class="tier-badge tier-t1">T1</span> Strategic (21 accounts)</th>
+        <th><span class="tier-badge tier-t2">T2</span> Cluster (77 accounts)</th>
+        <th><span class="tier-badge tier-t3">T3</span> Programmatic (52 accounts)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Paid Social</strong></td>
+        <td>LinkedIn matched audiences + Meta retargeting, Reddit/Quora targeted</td>
+        <td>LinkedIn industry targeting + Meta lookalikes, Reddit/Quora/TikTok</td>
+        <td>Programmatic across all platforms, broad awareness</td>
+      </tr>
+      <tr>
+        <td><strong>Outbound</strong></td>
+        <td>HeyReach sequences to 3-5 personas per account</td>
+        <td>HeyReach to Champion + Economic Buyer</td>
+        <td>None — not cost-effective</td>
+      </tr>
+      <tr>
+        <td><strong>Content</strong></td>
+        <td>Custom 1-pagers, personalized demos, webinars</td>
+        <td>Industry case studies, ROI calculators, webinars</td>
+        <td>Blog, ebooks, automated drip</td>
+      </tr>
+      <tr>
+        <td><strong>Sales Involvement</strong></td>
+        <td>AE assigned, weekly account reviews</td>
+        <td>SDR warm handoff when engaged</td>
+        <td>MQL handoff only</td>
+      </tr>
+      <tr>
+        <td><strong>Success Metric</strong></td>
+        <td>Pipeline created ($)</td>
+        <td>Meeting booked rate (%)</td>
+        <td>Engagement rate (%) + tier promotion</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="insight-box-green" style="margin-top: 14px;">
+    <strong>Tools powering this:</strong> HubSpot/Salesforce CRM &bull; Paid Social (LinkedIn, Meta, Reddit, Quora, TikTok) &bull; HeyReach (LinkedIn sequences) &bull; Claude Code (AI orchestration &amp; analysis)
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- SLIDE 24 — Live Demo -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section data-bg="gradient-green" class="center-slide">
+  <div style="padding: 60px 0;">
+    <span class="tag tag-green" style="font-size: 0.6em;">Live Demo</span>
+    <h1 style="font-size: 2.4em; margin-bottom: 20px;">Let's Run the Engine</h1>
+    <p style="font-size: 0.75em; color: var(--pd-black); max-width: 650px; margin: 0 auto 32px auto; line-height: 1.6;">
+      I'll score a fresh set of 20 accounts live to show the engine works.
+    </p>
+    <!-- Claude Code pixel robot -->
+    <div style="margin: 28px auto; display: flex; justify-content: center;">
+      <img src="research/Claude%20code%20logo.png" alt="Claude Code" style="width: 120px; height: auto; image-rendering: pixelated;">
+    </div>
+    <p style="font-size: 0.55em; color: var(--pd-gray); margin-top: 24px;">
+      Output: enriched CSV with tiers, personas, messaging angles, and recommended channels
+    </p>
+  </div>
+</section>
+
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  width: 1280,
+  height: 720,
+  margin: 0.08,
+  center: false,
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  backgroundTransition: 'fade',
+  controls: true,
+  progress: true,
+  history: true,
+});
+</script>
+</body>
+</html>
