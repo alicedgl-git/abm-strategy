@@ -240,7 +240,7 @@ def run_full_pipeline(input_file="data/funnel_leads.csv"):
     # Ensure agent output dirs exist
     for agent_dir in AGENT_DIRS.values():
         os.makedirs(agent_dir, exist_ok=True)
-    os.makedirs("research/charts", exist_ok=True)
+
 
     # Load data
     print("\n  Loading lead data...")
