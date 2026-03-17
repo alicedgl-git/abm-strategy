@@ -1,181 +1,98 @@
 # PandaDoc Style Guide
 
-PandaDoc's visual identity is clean, modern, and professional with a warm twist. The teal-green primary combined with warm sand/coral/amethyst accents creates a distinctive feel — neither cold-corporate nor overly playful.
+PandaDoc's visual identity emphasizes clarity, trust, and consultative selling skills.
 
 ## 1. Color Palette
-
 ### Primary Colors
-PandaDoc Green (Primary CTA & Brand)
-- Default: #248567 (Teal-Emerald Green — primary buttons, links, active states)
-- Dark: #136A50 (Deeper Teal — hover states)
-- Pastel: #E7F0EE (Pastel Emerald — light green backgrounds)
+Blue (Primary UI Accent)
+Default: #81C784 (Softer Green)
+Light: #A5D6A7 (Lighter Green)
+Pale: #E8F5E9 (Very Pale Green — for subtle indicators)
+Dark: #388E3C (Deeper Green — for strong success signals)
 
-### Accent Colors
-Coral (Warm Accent)
-- Default: #FF826C (Bright Coral — highlights, badges, attention)
-- Pastel: #FFEAE7 (Pastel Coral — soft backgrounds)
-
-Amethyst (Purple Accent)
-- Default: #A496FF (Bright Amethyst — feature highlights, premium indicators)
-
-Sand (Warm Neutral)
-- Default: #B2A48C (Warm Sand — subtle accents)
-- Pastel: #F8F5F3 (Pastel Sand — warm page backgrounds)
-
-Gold (Premium)
-- Default: #D5AD15 (Premium Gold — pricing highlights, enterprise badges)
+Green (Secondary — Success/Guidance)
+Default: #81C784 (Softer Green)
+Light: #A5D6A7 (Lighter Green)
+Pale: #E8F5E9 (Very Pale Green — for subtle indicators)
+Dark: #388E3C (Deeper Green — for strong success signals)
 
 ### Neutral Colors
-Black/Gray (Text & UI Elements)
-- Core Black: #242424 (Near-black charcoal — headings, primary text, logo)
-- Meta Gray: #888888 (Secondary text, timestamps, hints)
-- Border Gray: rgba(36, 36, 36, 0.3) (Subtle borders)
-- Grey-50: #C8CFD3 (Dividers, inactive elements)
-- Grey-30: #F3F5F6 (Light section backgrounds)
-- Grey: #E7EBED (Section backgrounds, alternating rows)
-
-White
-- White: #FFFFFF
-- Translucent White: rgba(255, 255, 255, 0.8) — overlays and subtle backgrounds
+Gray (Text & UI Elements)
+Default: #616161 (Medium Gray — primary text)
+Light: #9E9E9E (Light Gray — secondary text/hints)
+Very Light: #E0E0E0 (Very Light Gray — for subtle dividers/backgrounds)
+White/Translucent White
+White: #FFFFFF
+Translucent White: rgba(255, 255, 255, 0.8) — for overlays and subtle backgrounds
 
 ### Functional Colors
-- Success: #248567 (Brand Green) / Light: #E7F0EE
-- Warning: #FFD54F / Light: #FFE0B2
-- Error: #E44E48 / Light: #EF9A9A
-- Info: #64B5F6 / Light: #90CAF9
+Success: #81C784 / Light: #C8E6C9
+Warning: #FFD54F / Light: #FFE0B2
+Error: #E57373 / Light: #EF9A9A
+Info: #64B5F6 / Light: #90CAF9
 
-### Brand Gradients
-PandaDoc uses signature diagonal gradients (133-degree angle) for hero sections:
-1. **Sand-to-Amethyst:** `linear-gradient(133deg, #F1E8E3 0%, #D6CEFF 50%, #A496FF 100%)` — warm cream to soft purple
-2. **Sand-to-Emerald:** `linear-gradient(133deg, #EAE7DF 0%, #B9CDC7 65.75%, #A1C2B8 88.51%, #A1C2B8 100%)` — warm cream to sage green
-
-**Emphasis on Translucency:** Pale and translucent colors are used extensively for overlays, card backgrounds, and subtle UI elements to create a layered, non-intrusive feel.
+**Emphasis on Translucency:** Pale and Translucent White colors will be used extensively for overlays, card backgrounds, and subtle UI elements to create a layered, non-intrusive feel.
 
 ## 2. Typography
-
 ### Font Family
-Primary Font: Graphik Alt (licensed typeface)
-Fallback stack: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif
-Free alternative for presentations: Inter or DM Sans
-
+Primary Font: Atkinson Hyperlegible (loaded from Google Fonts)
+Fallback stack: system-ui, sans-serif
 ### Heading Styles
-| Level | Mobile | Desktop | Weight | Color |
-|-------|--------|---------|--------|-------|
-| H1 | 36px | 60px | 600 (Semibold) | #242424 |
-| H2 | 32px | 42px | 600 (Semibold) | #242424 |
-| H3 | 24px | 32px | 600 (Semibold) | #242424 |
-| H4 | 18px | 24px | 600 (Semibold) | #242424 |
-
+H1: Font weight 600, Color #616161 (Medium Gray)
+H2: Font weight 600, Color #616161 (Medium Gray)
+H3: Font weight 600, Color #616161 (Medium Gray)
 ### Text Colors
-- Primary text: #242424 (Core Black)
-- Secondary text: #888888 (Meta Gray)
-- Muted text: rgba(36, 36, 36, 0.5)
-- Body size: 14px–16px
-- Meta/small: 12px–14px
-
-### Font Weights
-- 400 — Regular (body text)
-- 600 — Semibold (headings, buttons, emphasis)
-- 700 — Bold (strong emphasis, rare)
+Primary text: #616161 (Medium Gray)
+Secondary text: #9E9E9E (Light Gray)
 
 ## 3. Spacing & Borders
-
-### Border Radius Scale
-- 4px — Standard (buttons, inputs)
-- 8px — Medium (cards, containers)
-- 16px — Large (feature cards, rounded sections)
-- 50% — Circular (avatars, icon buttons)
-
-### Borders
-- Default border: 1px solid rgba(36, 36, 36, 0.1) — very subtle
-- Input border: 1px solid rgba(36, 36, 36, 0.3)
-- Focus border: 1px solid #248567 (brand green)
-- Divider: 1px solid #C8CFD3
-
-### Shadows
-- Card shadow: 0 0 10px rgba(36, 36, 36, 0.15) — soft, diffused
-- Overlay shadow: slightly stronger for floating elements
-
-### Spacing
-- Base unit: 4px
-- Scale: 4, 8, 12, 16, 24, 32, 48, 64px
+Border radius: 8px (default), 12px (cards), 50% (circular elements)
+Border color: #E0E0E0 (subtle dividers)
+Spacing scale: 4px base unit (4, 8, 12, 16, 24, 32, 48)
 
 ## 4. Components
-
 ### Button Variants
-Primary Button: Background #248567, white text, font-weight 600, border-radius 4px, min-height 50px, min-width 140px, padding 13px 18px 14px, border 2px solid #248567
-- Hover: background #136A50, translateY(-2px) subtle lift effect
-- Transition: 0.25s ease on all properties
-
-Secondary Button: Background transparent, border 1px solid rgba(36, 36, 36, 0.6), text #242424
-- Hover: subtle background fill, translateY(-2px)
-
-Outline Button: Transparent with #248567 border, green text
-Text Button: Text-only with #248567 color, no border or background
-
+Primary Button (.dynapt-button-primary): Soft Blue background (#64B5F6), white text, slightly translucent background (rgba(100, 181, 246, 0.8))
+Secondary Button (.dynapt-button-secondary): Light Gray background (#E0E0E0), Dark Gray text (#616161), slightly translucent background (rgba(224, 224, 224, 0.8))
+Outline Button (.dynapt-button-outline): Transparent with Soft Blue border (#64B5F6)
+Text Button (.dynapt-button-text): Text-only button with Soft Blue text (#64B5F6)
+Icon Button (.dynapt-button-icon): Icon-only circular button, Pale Blue background (#E3F2FD), translucent (rgba(227, 242, 253, 0.7))
 #### Button States Consistency
-- **Active/Processing State:** Maintain a translucent white background (rgba(255, 255, 255, 0.5)) when in active/processing state, with a subtle spinner or progress animation.
-- **Color Consistency:** Interactive elements related to guidance (prompts, suggestions) should use variations of the brand green (#248567 and lighter).
-- **State Transitions:** All transitions use 0.25s ease. Hover includes translateY(-2px) lift effect. Smooth and subtle — no heavy animations.
+- **Active/Processing State:** Buttons should maintain a translucent white background (rgba(255, 255, 255, 0.5)) when in active/processing state, regardless of hover state, with a subtle spinner or progress animation.
+- **Color Consistency:** Interactive elements related to guidance (prompts, suggestions) should use variations of the Soft Green palette (#81C784 and lighter).
+- **State Transitions:** Button state transitions should be smooth and subtle, using fade and slight scale animations.
+
+### Real-time Display Elements
+Transcription Panel (.dynapt-transcript-panel): Pale Blue background (#E3F2FD), translucent (rgba(227, 242, 253, 0.6)), scrollable, clear text formatting for readability.
+Prompt Card (.dynapt-prompt-card): Pale Green background (#E8F5E9), translucent (rgba(232, 245, 233, 0.7)), subtle border, clear visual hierarchy for prompt text and actions.
+Knowledge Snippet (.dynapt-knowledge-snippet): Translucent White background (rgba(255, 255, 255, 0.7)), light border, concise and easily digestible format.
+Sentiment Indicator (.dynapt-sentiment-indicator): Subtle icon with color variations (Green for positive, Gray for neutral, Red for negative), placed unobtrusively.
 
 ### Form Elements
-Input: Height 40px (standard) / 50px (large), border 1px solid rgba(36, 36, 36, 0.3), border-radius 4px
-- Focus: border-color shifts to #248567 (brand green)
+Input (.dynapt-input): Light background (#F2EFE6), translucent (rgba(242, 239, 230, 0.5)), subtle border, clean style.
+Textarea (.dynapt-textarea): Light background (#F2EFE6), translucent (rgba(242, 239, 230, 0.5)), subtle border, clean style.
 
-Toggle: Track 41px x 20px, knob 16px circle
-- Off: rgba(36, 36, 36, 0.3)
-- On: #248567 (brand green), knob translateX(21px)
+### Authentication Components
+Supabase Auth UI (.dynapt-auth):
+- Container: Translucent White background (rgba(255, 255, 255, 0.9))
+- Input Fields: Match .dynapt-input styling
+- Buttons: Follow .dynapt-button-primary patterns
+- Social Auth Buttons: Use .dynapt-button-outline with provider-specific icons
+- Error Messages: Use Error status color (#E57373) with subtle fade-in animation
+- Success Messages: Use Success status color (#81C784) with subtle fade-in animation
 
 ### Cards and Containers
-Card: White or translucent white background (rgba(255, 255, 255, 0.7)), border 1px solid rgba(36, 36, 36, 0.1), shadow 0 0 10px rgba(36, 36, 36, 0.15), border-radius 8px
-Overlay Card: rgba(255, 255, 255, 0.85), slightly stronger shadow, for floating/modal elements
-
+Card (.dynapt-card): Translucent White background (rgba(255, 255, 255, 0.7)), very subtle shadow, rounded corners.
+Overlay Card (.dynapt-overlay-card): Translucent White background (rgba(255, 255, 255, 0.85)), slightly stronger shadow, designed for overlays on top of call interface.
 ### Tables
-Table: Light borders, very subtle alternating row colors (Pastel Emerald #E7F0EE for alternating rows)
-Table Header: Font-weight 600, slightly lighter background
-Table Row Hover: Very light highlight on hover
-
+Table (.dynapt-table): Light borders, very subtle alternating row colors (Pale Blue #E3F2FD for alternating rows, translucent rgba(227, 242, 253, 0.3)).
+Table Header: Bold text, slightly lighter background (Pale Blue #E3F2FD, translucent rgba(227, 242, 253, 0.5)).
+Table Row Hover: Very light highlight on hover (Pale Blue #E3F2FD, translucent rgba(227, 242, 253, 0.4)).
 ### Status Indicators
-Active Status: Brand Green (#248567)
-Inactive Status: Meta Gray (#888888)
-Error Status: Error Red (#E44E48)
-Warning Status: Warning Gold (#FFD54F)
-
+Status Indicator (.dynapt-status-indicator): Small, subtly animated circle with specific color, translucent background (rgba(255, 255, 255, 0.6)).
+Active Status: Soft Green (#81C784)
+Inactive Status: Light Gray (#9E9E9E)
+Error Status: Light Red (#E57373)
 ### Progress Tracking
-Progress Bar: Brand Green (#248567) animated fill, light gray track (#E7EBED)
-Progress Steps: Connected steps — #248567 for completed, #C8CFD3 for inactive
-
-## 5. Layout Guidelines
-
-### Page Structure
-- Container max-width: 1280px (homepage), 1200px (content pages)
-- Centered with auto margins
-- Generous whitespace — PandaDoc favors breathing room over density
-
-### Responsive Breakpoints
-| Breakpoint | Target |
-|------------|--------|
-| 600px | Small mobile |
-| 768px | Tablet |
-| 960px | Small desktop |
-| 1200px | Full desktop |
-
-### Grid
-- 12-column grid at desktop
-- Single column at mobile, 2-column at tablet
-- Gutter: 24px (desktop), 16px (mobile)
-
-### Design Philosophy
-- **Generous whitespace** with structured grid layouts
-- **Subtle depth** through very light shadows and borders rather than heavy elevation
-- **Warm neutrals** (sand, cream pastels) rather than cold grays for backgrounds
-- **Signature diagonal gradients** at 133 degrees for hero sections
-- **Consistent micro-interactions** (0.25s transitions, 2px lift on hover)
-- **Flat SVG icons** with solid fills matching #242424, no heavy drop shadows
-- **Illustrations:** Clean, geometric/flat style
-
-## 6. Logo
-- SVG format, height 36px in navigation
-- Default fill: #242424 (core black)
-- Reversed variant: white (#FFFFFF) for dark backgrounds
-- Always maintain clear space around the logo
+Progress Bar: Light Blue (#90CAF9) animated fill, translucent background (rgba(255, 255, 255, 0.5)).
+Progress Steps: Small, connected steps with subtle completion indicators (Pale Green #E8F5E9 for completed, Light Gray #9E9E9E for inactive), translucent background (rgba(255, 255, 255, 0.5)).
