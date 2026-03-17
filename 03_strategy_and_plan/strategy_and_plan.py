@@ -773,7 +773,7 @@ def generate_quarterly_plan_report():
     lines.append("|---|---|")
     lines.append("| Paid Social converts at 43% S1 rate — highest of any channel | **Paid Social is the primary engine** (LinkedIn, Meta, Reddit, Quora, TikTok). Outbound (18%) supplements ads, not the other way around. Cold outbound costs ~2x more per pipeline dollar. |")
     lines.append("| HR Tech (67%), Logistics (60%), Real Estate (40%) convert at 2-3x baseline | **Cluster T2 campaigns around these top verticals.** Deprioritize zero-conversion industries (Manufacturing, Insurance, Energy). |")
-    lines.append("| No CRM/Spreadsheets convert at 38% vs Salesforce at 10% | **This is a displacement play, not an enterprise upsell.** Accounts with weak or no CRM have more pain and lower switching costs. |")
+    lines.append("| No CRM/Spreadsheets convert at 38% vs Salesforce at 10% | **Mid-market CRMs are PandaDoc's sweet spot.** Accounts on Copper/Pipedrive have structured sales processes but haven't over-invested in enterprise document tools. |")
     lines.append("| /integrations page visits produce +12% conversion lift — strongest signal | **Integration-first content strategy.** CRM integration is PandaDoc's #1 differentiator — lead with it. |")
     lines.append("| Compliance messaging converts at 43% (highest theme); Legal is the #1 deal blocker | **Proactive legal engagement at every tier.** Engage Legal in parallel with Champion from day one — never wait for them to surface as a blocker. |")
     lines.append("| Paid Search converts at 0% | **Paused.** Budget reallocated to proven channels. Rethink targeting and landing pages before relaunch. |")

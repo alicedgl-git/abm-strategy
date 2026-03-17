@@ -207,7 +207,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Pacific Staffing
 **Industry:** HR Tech | **Revenue:** $25M – $100M | **CRM:** Monday CRM
 **Score:** 84 | **Personas Present:** Champion / User Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance — need to identify and engage
 **Mentioned Stakeholders:** General Counsel (Legal / Compliance)
 **Key Intel:** Call Dec 11. Legal team is the primary blocker — they want custom clause libraries and redlining capability. General Counsel (General Counsel) needs a separate demo. Top use case: contract lifecycle management for vendor agreements.
 
@@ -222,7 +222,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Matrix Staffing
 **Industry:** HR Tech | **Revenue:** $25M – $100M | **CRM:** Copper CRM
 **Score:** 79 | **Personas Present:** Champion / User Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance — need to identify and engage
 **Mentioned Stakeholders:** General Counsel (Legal / Compliance), VP of Operations (Technical Evaluator)
 **Key Intel:** Call Jan 18. Legal team is the primary blocker — they want custom clause libraries and redlining capability. VP of Operations (General Counsel) needs a separate demo. Top use case: contract lifecycle management for vendor agreements.
 
@@ -237,7 +237,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Waverly HR
 **Industry:** HR Tech | **Revenue:** $25M – $100M | **CRM:** Zoho CRM
 **Score:** 75 | **Personas Present:** Economic Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Legal / Compliance, Champion / User Buyer — need to identify and engage
 **Mentioned Stakeholders:** Chief of Staff (Executive Sponsor)
 **Key Intel:** Demo Jan 06. Prospect mid-evaluation with Ironclad as the other finalist. PandaDoc differentiator: Salesforce native integration and real-time analytics. Chief of Staff liked the content library. Sending competitive comparison doc.
 
@@ -253,7 +253,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Axiom Legal Partners
 **Industry:** Legal | **Revenue:** $25M – $100M | **CRM:** Monday CRM
 **Score:** 73 | **Personas Present:** Technical Evaluator
-**Multi-threading Gap:** Missing Legal / Compliance, Economic Buyer, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Economic Buyer, Legal / Compliance, Champion / User Buyer — need to identify and engage
 **Mentioned Stakeholders:** CTO (Technical Evaluator), Director of Contracts (Legal / Compliance)
 **Key Intel:** Intro call Dec 16. Ops team handles all contracts manually in Google Docs — frustrated with signature chasing. Director of Contracts controls budget. Timeline: wants solution live before before fiscal year-end.
 
@@ -269,7 +269,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Foxbrook Legal
 **Industry:** Legal | **Revenue:** $25M – $100M | **CRM:** Zoho CRM
 **Score:** 70 | **Personas Present:** Economic Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Legal / Compliance, Champion / User Buyer — need to identify and engage
 
 **Elizabeth Ramirez** (Economic Buyer)
 - Opening: Many Legal companies using Zoho CRM are switching to PandaDoc to too many point solutions...
@@ -282,7 +282,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Forgepoint Capital
 **Industry:** Financial Services | **Revenue:** $25M – $100M | **CRM:** Monday CRM
 **Score:** 67 | **Personas Present:** Executive Sponsor
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance, Champion / User Buyer — need to identify and engage
 
 **Sarah Okafor** (Executive Sponsor)
 - Opening: Many Financial Services companies using Monday CRM are switching to PandaDoc to document processes holding back growth...
@@ -295,7 +295,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Praxis Finance
 **Industry:** Financial Services | **Revenue:** $25M – $100M | **CRM:** Copper CRM
 **Score:** 67 | **Personas Present:** Champion / User Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance — need to identify and engage
 
 **Tiffany Taylor** (Champion / User Buyer)
 - Opening: Many Financial Services companies using Copper CRM are switching to PandaDoc to slow proposal turnaround...
@@ -308,7 +308,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Nordic Capital
 **Industry:** Financial Services | **Revenue:** $25M – $100M | **CRM:** Copper CRM
 **Score:** 67 | **Personas Present:** Technical Evaluator
-**Multi-threading Gap:** Missing Legal / Compliance, Economic Buyer, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Economic Buyer, Legal / Compliance, Champion / User Buyer — need to identify and engage
 
 **Nicole Patel** (Technical Evaluator)
 - Opening: Many Financial Services companies using Copper CRM are switching to PandaDoc to disconnected tools...
@@ -321,7 +321,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Grove Staffing
 **Industry:** HR Tech | **Revenue:** $25M – $100M | **CRM:** HubSpot
 **Score:** 66 | **Personas Present:** Economic Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Legal / Compliance, Champion / User Buyer — need to identify and engage
 
 **Amanda Taylor** (Economic Buyer)
 - Opening: Many HR Tech companies using HubSpot are switching to PandaDoc to too many point solutions...
@@ -334,7 +334,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Windfall Finance
 **Industry:** Financial Services | **Revenue:** $25M – $100M | **CRM:** Copper CRM
 **Score:** 65 | **Personas Present:** Executive Sponsor
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance, Champion / User Buyer — need to identify and engage
 **Mentioned Stakeholders:** VP of Sales (Champion / User Buyer)
 **Key Intel:** Intro call Jan 09. Ops team handles all contracts manually in Google Docs — frustrated with signature chasing. VP of Sales controls budget. Timeline: wants solution live before Q2.
 
@@ -350,7 +350,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Lattice HR
 **Industry:** HR Tech | **Revenue:** $25M – $100M | **CRM:** HubSpot
 **Score:** 65 | **Personas Present:** Executive Sponsor
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance, Champion / User Buyer — need to identify and engage
 **Mentioned Stakeholders:** VP of Sales (Champion / User Buyer)
 **Key Intel:** Call Feb 15 — prospect flagged urgency around a new sales hire ramp. Wants templating + content library for onboarding reps fast. VP of Sales is the decision-maker. Trial starts next week.
 
@@ -365,7 +365,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Granite Financial
 **Industry:** Financial Services | **Revenue:** $25M – $100M | **CRM:** Pipedrive
 **Score:** 62 | **Personas Present:** Economic Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Legal / Compliance, Champion / User Buyer — need to identify and engage
 **Mentioned Stakeholders:** CRO (Champion / User Buyer)
 **Key Intel:** Intro call Dec 08. Ops team handles all contracts manually in Google Docs — frustrated with signature chasing. CRO controls budget. Timeline: wants solution live before Q2.
 
@@ -381,7 +381,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Pinnacle Legal
 **Industry:** Legal | **Revenue:** $25M – $100M | **CRM:** Microsoft Dynamics
 **Score:** 62 | **Personas Present:** Technical Evaluator
-**Multi-threading Gap:** Missing Legal / Compliance, Economic Buyer, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Economic Buyer, Legal / Compliance, Champion / User Buyer — need to identify and engage
 
 **Heather Rodriguez** (Technical Evaluator)
 - Opening: Many Legal companies using Microsoft Dynamics are switching to PandaDoc to disconnected tools...
@@ -394,7 +394,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Terrace Consulting
 **Industry:** Consulting | **Revenue:** $25M – $100M | **CRM:** Copper CRM
 **Score:** 62 | **Personas Present:** Economic Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Legal / Compliance, Champion / User Buyer — need to identify and engage
 **Mentioned Stakeholders:** COO (Executive Sponsor)
 **Key Intel:** Demo Feb 09. Finance team involved because they want automated payment collection post-signature. PandaDoc Payments is the hook. COO runs RevOps and controls the tech stack. Timing: Q3 rollout.
 
@@ -409,7 +409,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Bastion Legal
 **Industry:** Legal | **Revenue:** $25M – $100M | **CRM:** Microsoft Dynamics
 **Score:** 61 | **Personas Present:** Economic Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Legal / Compliance, Champion / User Buyer — need to identify and engage
 
 **Edward Perez** (Economic Buyer)
 - Opening: Many Legal companies using Microsoft Dynamics are switching to PandaDoc to too many point solutions...
@@ -422,7 +422,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Delphi Consulting
 **Industry:** Consulting | **Revenue:** $25M – $100M | **CRM:** Monday CRM
 **Score:** 61 | **Personas Present:** Executive Sponsor
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance, Champion / User Buyer — need to identify and engage
 **Mentioned Stakeholders:** VP of Sales (Champion / User Buyer)
 **Key Intel:** Discovery Feb 16. Growing team — doubled headcount this year. Proposal process hasn't scaled with the team. Top use case: templatized proposals with CRM-pulled data. VP of Sales mentioned this is a 30 days initiative.
 
@@ -438,7 +438,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Broadleaf Consulting
 **Industry:** Consulting | **Revenue:** $25M – $100M | **CRM:** Monday CRM
 **Score:** 61 | **Personas Present:** Executive Sponsor
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance, Champion / User Buyer — need to identify and engage
 **Mentioned Stakeholders:** General Counsel (Legal / Compliance)
 **Key Intel:** Call Dec 11. Legal team is the primary blocker — they want custom clause libraries and redlining capability. General Counsel (General Counsel) needs a separate demo. Top use case: contract lifecycle management for vendor agreements.
 
@@ -466,7 +466,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Vantage Legal
 **Industry:** Legal | **Revenue:** $25M – $100M | **CRM:** Salesforce
 **Score:** 60 | **Personas Present:** Champion / User Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Economic Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Economic Buyer, Legal / Compliance — need to identify and engage
 **Mentioned Stakeholders:** CTO (Technical Evaluator), Director of Contracts (Legal / Compliance)
 **Key Intel:** Call Jan 18. Came in from a G2 review. Currently using no dedicated tool — everything in email. Key pain: no e-sign, delays on every deal. Director of Contracts is the AE who filled out the form. Great greenfield opportunity.
 
@@ -481,7 +481,7 @@ Showing how the persona frameworks get applied to specific T1 accounts:
 **Account:** Juncture Legal
 **Industry:** Legal | **Revenue:** $25M – $100M | **CRM:** Salesforce
 **Score:** 60 | **Personas Present:** Economic Buyer
-**Multi-threading Gap:** Missing Legal / Compliance, Technical Evaluator, Champion / User Buyer — need to identify and engage
+**Multi-threading Gap:** Missing Technical Evaluator, Legal / Compliance, Champion / User Buyer — need to identify and engage
 
 **Priya Morales** (Economic Buyer)
 - Opening: Many Legal companies using Salesforce are switching to PandaDoc to too many point solutions...

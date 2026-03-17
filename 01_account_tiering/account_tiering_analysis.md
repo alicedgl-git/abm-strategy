@@ -17,7 +17,7 @@ for both training data and new accounts. Weights are derived from **expected val
 | Signal Category | Max Points | How It's Calculated |
 |----------------|-----------|-------------------|
 | Industry Fit | 30 | Conversion rate vs baseline. HR Tech 67% = 30pts, Insurance 0% = 0pts |
-| CRM Displacement | 20 | None/Spreadsheets & Pipedrive = high (38% convert), Salesforce = low (10%) |
+| CRM Fit | 20 | Mid-market CRMs (Copper, Pipedrive) = high EV, enterprise CRMs (Salesforce) = low EV |
 | Revenue Fit | 20 | $25M-$100M = highest (30% convert), <$5M = lowest (14%) |
 | Employee Band | 15 | 51-200 = highest (28% convert), 501-1000 = lowest (10%) |
 | Country | 15 | Germany = highest (44% convert), France = lowest (0%) |
@@ -62,7 +62,7 @@ Aware → Engaged → Considering → Selecting), managed through CRM workflows.
 | Insurance | 7 | 0 | 0% | 0 |
 | Energy | 4 | 0 | 0% | 0 |
 
-## CRM Displacement Opportunity
+## CRM Fit Analysis
 | Current CRM | Leads | S1 | Rate | Score (/20) |
 |-------------|-------|-----|------|-------------|
 | Pipedrive | 13 | 5 | 38% | 16 |
@@ -138,7 +138,7 @@ These signals don't affect the tier score but inform the activation strategy.
 
 ## How the Model Gets Refreshed
 **Tier re-scoring** (firmographic weights change):
-1. **Quarterly weight recalibration** — Feedback engine analyzes new S1 outcomes and ACV data, recalculates expected values, updates all 5 weight categories
+1. **Quarterly weight recalibration** — Feedback engine analyzes new S1 outcomes, recalculates conversion ratios, updates all 5 weight categories
 2. **Firmographic change** — Company gets acquired, raises funding, headcount grows (via enrichment tools like Clay/Apollo) → re-score
 3. **Growing dataset** — Each quarter, new funnel data (150 → 300 → 500 leads) makes weights more statistically reliable
 

@@ -100,7 +100,7 @@ def derive_scoring_weights(analysis):
     industry_scores["_default"] = 10
     industry_scores["_max"] = 30
 
-    # CRM DISPLACEMENT SCORING (max 20 points)
+    # CRM FIT SCORING (max 20 points)
     crm_scores = {}
     crm_ev = [data["expected_value"] for data in analysis["by_crm"].values() if data["expected_value"] > 0]
     baseline_crm_ev = sum(crm_ev) / len(crm_ev) if crm_ev else 1
@@ -171,7 +171,7 @@ def score_account(lead, weights):
     industry_w = weights["industry"]
     breakdown["industry"] = industry_w.get(lead["industry"], industry_w.get("_default", 10))
 
-    # CRM displacement score (max 20)
+    # CRM fit score (max 20)
     crm_w = weights["crm"]
     breakdown["crm"] = crm_w.get(lead["current_crm"], crm_w.get("_default", 5))
 
@@ -253,7 +253,7 @@ def run_tiering(leads, output_dir="output"):
     for ind, data in sorted_ind[:5]:
         print(f"    {ind}: {data['rate']:.0%} ({data['converted']}/{data['total']}) -> Score: {weights['industry'].get(ind, 0)}")
 
-    print("\n  TOP CONVERTING CRMs (displacement opportunity):")
+    print("\n  TOP CONVERTING CRMs (tech stack fit):")
     sorted_crm = sorted(analysis["by_crm"].items(), key=lambda x: x[1]["rate"], reverse=True)
     for crm, data in sorted_crm[:5]:
         print(f"    {crm}: {data['rate']:.0%} ({data['converted']}/{data['total']}) -> Score: {weights['crm'].get(crm, 0)}")
@@ -357,7 +357,7 @@ def generate_tiering_report(analysis, weights, scored_accounts, tier_counts, tie
     lines.append("| Signal Category | Max Points | How It's Calculated |")
     lines.append("|----------------|-----------|-------------------|")
     lines.append("| Industry Fit | 30 | Conversion rate vs baseline. HR Tech 67% = 30pts, Insurance 0% = 0pts |")
-    lines.append("| CRM Displacement | 20 | None/Spreadsheets & Pipedrive = high (38% convert), Salesforce = low (10%) |")
+    lines.append("| CRM Fit | 20 | Mid-market CRMs (Copper, Pipedrive) = high EV, enterprise CRMs (Salesforce) = low EV |")
     lines.append("| Revenue Fit | 20 | $25M-$100M = highest (30% convert), <$5M = lowest (14%) |")
     lines.append("| Employee Band | 15 | 51-200 = highest (28% convert), 501-1000 = lowest (10%) |")
     lines.append("| Country | 15 | Germany = highest (44% convert), France = lowest (0%) |")
@@ -394,7 +394,7 @@ def generate_tiering_report(analysis, weights, scored_accounts, tier_counts, tie
     lines.append("")
 
     # CRM conversion
-    lines.append("## CRM Displacement Opportunity")
+    lines.append("## CRM Fit Analysis")
     lines.append("| Current CRM | Leads | S1 | Rate | Score (/20) |")
     lines.append("|-------------|-------|-----|------|-------------|")
     sorted_crm = sorted(analysis["by_crm"].items(), key=lambda x: x[1]["rate"], reverse=True)

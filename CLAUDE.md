@@ -32,7 +32,7 @@ python3 orchestrator.py --score data/demo_accounts.csv         # Score mode — 
 ## Key Data Insights (from 150-lead analysis)
 - **Baseline S1 rate:** 22% (33/150 leads converted to opportunity)
 - **Top industries:** HR Tech (67%), Logistics (60%), Real Estate (40%)
-- **Top CRM signal:** None/Spreadsheets (38%) and Pipedrive (38%) — displacement opportunity
+- **Top CRM signal:** Copper ($6.4K EV) and Pipedrive ($6.2K EV) — mid-market CRM fit
 - **Strongest engagement signal:** /integrations page visit (+12% lift)
 - **Best channels:** Paid Social (43%), AppExchange (40%), Inbound (33%)
 - **Dead channels:** Paid Search (0%), Partner (8%)
