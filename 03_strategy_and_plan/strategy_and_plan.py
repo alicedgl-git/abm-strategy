@@ -11,31 +11,27 @@ This module:
 
 import os
 from collections import Counter, defaultdict
-from utils import load_leads, get_conversion_rates, write_markdown
+from utils import load_leads, get_conversion_rates, get_expected_values, write_markdown
 
 # ─────────────────────────────────────────────
 # CHANNEL INTELLIGENCE (from data)
 # ─────────────────────────────────────────────
 
 def analyze_channels(leads):
-    """Analyze channel performance from conversion data."""
-    channel_rates = get_conversion_rates(leads, "channel")
+    """Analyze channel performance using expected value (conversion rate × avg ACV)."""
+    channel_ev = get_expected_values(leads, "channel")
 
-    # Calculate ACV per channel
-    channel_acv = defaultdict(float)
-    channel_s1_count = defaultdict(int)
+    # Calculate total pipeline per channel
+    channel_pipeline = defaultdict(float)
     for lead in leads:
         if lead["s1"] == 1 and lead["opportunity_acv"] > 0:
-            channel_acv[lead["channel"]] += lead["opportunity_acv"]
-            channel_s1_count[lead["channel"]] += 1
+            channel_pipeline[lead["channel"]] += lead["opportunity_acv"]
 
     channel_analysis = {}
-    for channel, data in channel_rates.items():
-        avg_acv = channel_acv[channel] / channel_s1_count[channel] if channel_s1_count[channel] > 0 else 0
+    for channel, data in channel_ev.items():
         channel_analysis[channel] = {
             **data,
-            "total_pipeline": channel_acv[channel],
-            "avg_acv": avg_acv,
+            "total_pipeline": channel_pipeline.get(channel, 0),
             "recommendation": get_channel_recommendation(channel, data["rate"], data["total"]),
         }
 
@@ -672,11 +668,11 @@ def run_strategy_and_plan(leads, scored_accounts, output_dir="output"):
     print("\n[1/3] Analyzing channel performance...")
     channel_analysis = analyze_channels(leads)
 
-    print("\n  CHANNEL PERFORMANCE RANKING:")
-    sorted_channels = sorted(channel_analysis.items(), key=lambda x: x[1]["rate"], reverse=True)
+    print("\n  CHANNEL PERFORMANCE RANKING (by Expected Value):")
+    sorted_channels = sorted(channel_analysis.items(), key=lambda x: x[1]["expected_value"], reverse=True)
     for ch, data in sorted_channels:
         rec = data["recommendation"]
-        print(f"    {ch}: {data['rate']:.0%} S1 rate ({data['converted']}/{data['total']}) → {rec['action']} | Budget: {rec['budget_pct']}%")
+        print(f"    {ch}: ${data['expected_value']:,.0f} EV ({data['rate']:.0%} S1, ${data['avg_acv']:,.0f} ACV) → {rec['action']} | Budget: {rec['budget_pct']}%")
 
     # Step 2: Tier channel mix
     print("\n[2/3] Building tier-specific channel strategies...")
@@ -703,20 +699,21 @@ def generate_channel_report(channel_analysis):
     lines = []
     lines.append("# Channel Strategy Report")
     lines.append("")
-    lines.append("## Channel Performance (from Data)")
-    lines.append("| Channel | Leads | S1 | Rate | Pipeline | Action | Budget % |")
-    lines.append("|---------|-------|-----|------|----------|--------|----------|")
-    sorted_channels = sorted(channel_analysis.items(), key=lambda x: x[1]["rate"], reverse=True)
+    lines.append("## Channel Performance by Expected Value")
+    lines.append("| Channel | Leads | S1 | Rate | Avg ACV | Expected Value | Action | Budget % |")
+    lines.append("|---------|-------|-----|------|---------|---------------|--------|----------|")
+    sorted_channels = sorted(channel_analysis.items(), key=lambda x: x[1]["expected_value"], reverse=True)
     for ch, data in sorted_channels:
         rec = data["recommendation"]
-        pipeline = f"${data['total_pipeline']:,.0f}" if data["total_pipeline"] > 0 else "-"
-        lines.append(f"| {ch} | {data['total']} | {data['converted']} | {data['rate']:.0%} | {pipeline} | **{rec['action']}** | {rec['budget_pct']}% |")
+        acv = f"${data['avg_acv']:,.0f}" if data["avg_acv"] > 0 else "-"
+        ev = f"${data['expected_value']:,.0f}" if data["expected_value"] > 0 else "$0"
+        lines.append(f"| {ch} | {data['total']} | {data['converted']} | {data['rate']:.0%} | {acv} | {ev} | **{rec['action']}** | {rec['budget_pct']}% |")
     lines.append("")
 
     # Key insights (data-derived)
     lines.append("## Key Channel Insights (from Data)")
     lines.append("")
-    lines.append("*All conversion rates below come directly from the 150-lead dataset.*")
+    lines.append("*All values below come directly from the 150-lead dataset. Channels ranked by expected value (conversion rate × avg ACV).*")
     lines.append("")
     # Generate insights from actual data, sorted by conversion rate
     top_channels = sorted_channels[:3]
@@ -734,7 +731,7 @@ def generate_channel_report(channel_analysis):
     for ch, data in sorted_channels:
         rec = data["recommendation"]
         lines.append(f"\n### {ch} — {rec['action']}")
-        lines.append(f"**Conversion:** {data['rate']:.0%} | **Volume:** {data['total']} leads | **Pipeline:** ${data['total_pipeline']:,.0f}")
+        lines.append(f"**Expected Value:** ${data['expected_value']:,.0f} | **Conversion:** {data['rate']:.0%} | **Avg ACV:** ${data['avg_acv']:,.0f} | **Volume:** {data['total']} leads")
         lines.append(f"\n**Strategy:** {rec['strategy']}")
         lines.append(f"\n**ABM Role:** {rec['abm_role']}")
         lines.append(f"\n**Budget Allocation:** {rec['budget_pct']}%")

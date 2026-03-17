@@ -51,7 +51,7 @@ def analyze_conversion_patterns(leads):
     analysis["by_country"] = get_expected_values(leads, "country")
 
     # Behavioral dimensions (used for strategic insights, NOT for scoring)
-    analysis["by_channel"] = get_conversion_rates(leads, "channel")
+    analysis["by_channel"] = get_expected_values(leads, "channel")
     analysis["engagement_lift"] = get_engagement_lift(leads)
 
     # Qualitative signal analysis (behavioral — for insights only)
@@ -439,12 +439,14 @@ def generate_tiering_report(analysis, weights, scored_accounts, tier_counts, tie
     lines.append("")
 
     # Channel conversion
-    lines.append("### Channel Performance")
-    lines.append("| Channel | Leads | S1 | Rate |")
-    lines.append("|---------|-------|-----|------|")
-    sorted_ch = sorted(analysis["by_channel"].items(), key=lambda x: x[1]["rate"], reverse=True)
+    lines.append("### Channel Performance (by Expected Value)")
+    lines.append("| Channel | Leads | S1 | Rate | Avg ACV | Expected Value |")
+    lines.append("|---------|-------|-----|------|---------|---------------|")
+    sorted_ch = sorted(analysis["by_channel"].items(), key=lambda x: x[1]["expected_value"], reverse=True)
     for ch, data in sorted_ch:
-        lines.append(f"| {ch} | {data['total']} | {data['converted']} | {data['rate']:.0%} |")
+        acv_str = f"${data['avg_acv']:,.0f}" if data['avg_acv'] > 0 else "-"
+        ev_str = f"${data['expected_value']:,.0f}" if data['expected_value'] > 0 else "$0"
+        lines.append(f"| {ch} | {data['total']} | {data['converted']} | {data['rate']:.0%} | {acv_str} | {ev_str} |")
     lines.append("")
 
     # Engagement lift

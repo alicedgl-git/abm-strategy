@@ -1,32 +1,32 @@
 # Channel Strategy Report
 
-## Channel Performance (from Data)
-| Channel | Leads | S1 | Rate | Pipeline | Action | Budget % |
-|---------|-------|-----|------|----------|--------|----------|
-| Paid Social | 7 | 3 | 43% | $82,400 | **SCALE** | 20% |
-| Appexchange | 15 | 6 | 40% | $64,900 | **SCALE** | 5% |
-| Inbound | 33 | 11 | 33% | $210,900 | **INVEST** | 25% |
-| Review Site | 7 | 2 | 29% | $28,100 | **INVEST** | 5% |
-| Webinar | 8 | 2 | 25% | $46,100 | **INVEST** | 10% |
-| Outbound | 17 | 3 | 18% | $20,700 | **OPTIMIZE** | 15% |
-| Content Syndication | 14 | 2 | 14% | $11,900 | **RETHINK** | 5% |
-| Intent Data | 29 | 3 | 10% | $20,500 | **RETHINK** | 5% |
-| Partner | 13 | 1 | 8% | $2,000 | **RETHINK** | 5% |
-| Paid Search | 7 | 0 | 0% | - | **PAUSE** | 0% |
+## Channel Performance by Expected Value
+| Channel | Leads | S1 | Rate | Avg ACV | Expected Value | Action | Budget % |
+|---------|-------|-----|------|---------|---------------|--------|----------|
+| Paid Social | 7 | 3 | 43% | $27,467 | $11,771 | **SCALE** | 20% |
+| Inbound | 33 | 11 | 33% | $19,173 | $6,391 | **INVEST** | 25% |
+| Webinar | 8 | 2 | 25% | $23,050 | $5,762 | **INVEST** | 10% |
+| Appexchange | 15 | 6 | 40% | $10,817 | $4,327 | **SCALE** | 5% |
+| Review Site | 7 | 2 | 29% | $14,050 | $4,014 | **INVEST** | 5% |
+| Outbound | 17 | 3 | 18% | $6,900 | $1,218 | **OPTIMIZE** | 15% |
+| Content Syndication | 14 | 2 | 14% | $5,950 | $850 | **RETHINK** | 5% |
+| Intent Data | 29 | 3 | 10% | $6,833 | $707 | **RETHINK** | 5% |
+| Partner | 13 | 1 | 8% | $2,000 | $154 | **RETHINK** | 5% |
+| Paid Search | 7 | 0 | 0% | - | $0 | **PAUSE** | 0% |
 
 ## Key Channel Insights (from Data)
 
-*All conversion rates below come directly from the 150-lead dataset.*
+*All values below come directly from the 150-lead dataset. Channels ranked by expected value (conversion rate × avg ACV).*
 
 1. **Paid Social (43% S1)** — Converts at 43% — highest in the dataset. Scale across LinkedIn Ads, Meta Ads, Reddit, Quora, and TikTok. LinkedIn matched audiences for T1/T2, broader programmatic mix for T3. Layer retargeting across platforms.
-2. **Appexchange (40% S1)** — Converts at 40% — second highest. These accounts are self-qualifying. Optimize listing, drive G2 reviews, feature competitive comparisons.
-3. **Inbound (33% S1)** — Converts at 33% with 33 leads — strong foundation. Invest in SEO, GEO (Generative Engine Optimization), and industry-specific landing pages.
+2. **Inbound (33% S1)** — Converts at 33% with 33 leads — strong foundation. Invest in SEO, GEO (Generative Engine Optimization), and industry-specific landing pages.
+3. **Webinar (25% S1)** — Converts at 25%. Run industry-specific webinars for T2, virtual executive roundtables for T1, broad educational for T3.
 - **Paid Search (0% S1)** — 0% conversion — pause and audit. Rethink targeting, keywords, and landing pages before relaunch.
 
 ## Channel-by-Channel Strategy
 
 ### Paid Social — SCALE
-**Conversion:** 43% | **Volume:** 7 leads | **Pipeline:** $82,400
+**Expected Value:** $11,771 | **Conversion:** 43% | **Avg ACV:** $27,467 | **Volume:** 7 leads
 
 **Strategy:** Converts at 43% — highest in the dataset. Scale across LinkedIn Ads, Meta Ads, Reddit, Quora, and TikTok. LinkedIn matched audiences for T1/T2, broader programmatic mix for T3. Layer retargeting across platforms.
 
@@ -35,18 +35,8 @@
 **Budget Allocation:** 20%
 
 
-### Appexchange — SCALE
-**Conversion:** 40% | **Volume:** 15 leads | **Pipeline:** $64,900
-
-**Strategy:** Converts at 40% — second highest. These accounts are self-qualifying. Optimize listing, drive G2 reviews, feature competitive comparisons.
-
-**ABM Role:** High-intent capture (40% S1 rate). Fast-track AppExchange leads to demo — they're already evaluating.
-
-**Budget Allocation:** 5%
-
-
 ### Inbound — INVEST
-**Conversion:** 33% | **Volume:** 33 leads | **Pipeline:** $210,900
+**Expected Value:** $6,391 | **Conversion:** 33% | **Avg ACV:** $19,173 | **Volume:** 33 leads
 
 **Strategy:** Converts at 33% with 33 leads — strong foundation. Invest in SEO, GEO (Generative Engine Optimization), and industry-specific landing pages.
 
@@ -55,18 +45,8 @@
 **Budget Allocation:** 25%
 
 
-### Review Site — INVEST
-**Conversion:** 29% | **Volume:** 7 leads | **Pipeline:** $28,100
-
-**Strategy:** Converts at 29% — trust signal. Invest in G2/Capterra presence. Use review site intent data for targeting.
-
-**ABM Role:** Trust-building (29% S1 rate). Send G2 comparison reports to T2 accounts in evaluation.
-
-**Budget Allocation:** 5%
-
-
 ### Webinar — INVEST
-**Conversion:** 25% | **Volume:** 8 leads | **Pipeline:** $46,100
+**Expected Value:** $5,762 | **Conversion:** 25% | **Avg ACV:** $23,050 | **Volume:** 8 leads
 
 **Strategy:** Converts at 25%. Run industry-specific webinars for T2, virtual executive roundtables for T1, broad educational for T3.
 
@@ -75,8 +55,28 @@
 **Budget Allocation:** 10%
 
 
+### Appexchange — SCALE
+**Expected Value:** $4,327 | **Conversion:** 40% | **Avg ACV:** $10,817 | **Volume:** 15 leads
+
+**Strategy:** Converts at 40% — second highest. These accounts are self-qualifying. Optimize listing, drive G2 reviews, feature competitive comparisons.
+
+**ABM Role:** High-intent capture (40% S1 rate). Fast-track AppExchange leads to demo — they're already evaluating.
+
+**Budget Allocation:** 5%
+
+
+### Review Site — INVEST
+**Expected Value:** $4,014 | **Conversion:** 29% | **Avg ACV:** $14,050 | **Volume:** 7 leads
+
+**Strategy:** Converts at 29% — trust signal. Invest in G2/Capterra presence. Use review site intent data for targeting.
+
+**ABM Role:** Trust-building (29% S1 rate). Send G2 comparison reports to T2 accounts in evaluation.
+
+**Budget Allocation:** 5%
+
+
 ### Outbound — OPTIMIZE
-**Conversion:** 18% | **Volume:** 17 leads | **Pipeline:** $20,700
+**Expected Value:** $1,218 | **Conversion:** 18% | **Avg ACV:** $6,900 | **Volume:** 17 leads
 
 **Strategy:** Converts at 18% — supplements ads, don't lead with it. Focus SDR outreach on T1/T2 only. Use HeyReach for LinkedIn sequences.
 
@@ -86,7 +86,7 @@
 
 
 ### Content Syndication — RETHINK
-**Conversion:** 14% | **Volume:** 14 leads | **Pipeline:** $11,900
+**Expected Value:** $850 | **Conversion:** 14% | **Avg ACV:** $5,950 | **Volume:** 14 leads
 
 **Strategy:** Converts at 14% — below average. Only syndicate to high-converting industries. Stop broad syndication.
 
@@ -96,7 +96,7 @@
 
 
 ### Intent Data — RETHINK
-**Conversion:** 10% | **Volume:** 29 leads | **Pipeline:** $20,500
+**Expected Value:** $707 | **Conversion:** 10% | **Avg ACV:** $6,833 | **Volume:** 29 leads
 
 **Strategy:** Converts at 10% as direct channel — use for account IDENTIFICATION, not outreach. Feed intent signals into scoring engine.
 
@@ -106,7 +106,7 @@
 
 
 ### Partner — RETHINK
-**Conversion:** 8% | **Volume:** 13 leads | **Pipeline:** $2,000
+**Expected Value:** $154 | **Conversion:** 8% | **Avg ACV:** $2,000 | **Volume:** 13 leads
 
 **Strategy:** Converts at 8% — underperforming. Maintain partner relationships but don't over-invest. Focus on CRM ecosystem partners.
 
@@ -116,7 +116,7 @@
 
 
 ### Paid Search — PAUSE
-**Conversion:** 0% | **Volume:** 7 leads | **Pipeline:** $0
+**Expected Value:** $0 | **Conversion:** 0% | **Avg ACV:** $0 | **Volume:** 7 leads
 
 **Strategy:** 0% conversion — pause and audit. Rethink targeting, keywords, and landing pages before relaunch.
 

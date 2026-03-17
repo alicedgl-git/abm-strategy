@@ -106,19 +106,19 @@ Aware → Engaged → Considering → Selecting), managed through CRM workflows.
 ## Behavioral Insights (Not in Tier Score)
 These signals don't affect the tier score but inform the activation strategy.
 
-### Channel Performance
-| Channel | Leads | S1 | Rate |
-|---------|-------|-----|------|
-| Paid Social | 7 | 3 | 43% |
-| Appexchange | 15 | 6 | 40% |
-| Inbound | 33 | 11 | 33% |
-| Review Site | 7 | 2 | 29% |
-| Webinar | 8 | 2 | 25% |
-| Outbound | 17 | 3 | 18% |
-| Content Syndication | 14 | 2 | 14% |
-| Intent Data | 29 | 3 | 10% |
-| Partner | 13 | 1 | 8% |
-| Paid Search | 7 | 0 | 0% |
+### Channel Performance (by Expected Value)
+| Channel | Leads | S1 | Rate | Avg ACV | Expected Value |
+|---------|-------|-----|------|---------|---------------|
+| Paid Social | 7 | 3 | 43% | $27,467 | $11,771 |
+| Inbound | 33 | 11 | 33% | $19,173 | $6,391 |
+| Webinar | 8 | 2 | 25% | $23,050 | $5,762 |
+| Appexchange | 15 | 6 | 40% | $10,817 | $4,327 |
+| Review Site | 7 | 2 | 29% | $14,050 | $4,014 |
+| Outbound | 17 | 3 | 18% | $6,900 | $1,218 |
+| Content Syndication | 14 | 2 | 14% | $5,950 | $850 |
+| Intent Data | 29 | 3 | 10% | $6,833 | $707 |
+| Partner | 13 | 1 | 8% | $2,000 | $154 |
+| Paid Search | 7 | 0 | 0% | - | $0 |
 
 ### Engagement Signal Lift
 | Action | S1 Rate | Non-S1 Rate | Lift |
