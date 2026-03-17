@@ -115,24 +115,24 @@ Most accounts have only 1 known contact. Key personas to map and engage:
 ### T1 Account Persona Coverage
 | Company | Known Persona | Missing Personas | Mentioned in Notes |
 |---------|--------------|-----------------|-------------------|
-| Cornerstone HR | Legal / Compliance | Economic Buyer, Champion / User Buyer, Technical Evaluator | General Counsel, CFO |
-| Pacific Staffing | Champion / User Buyer | Economic Buyer, Legal / Compliance, Technical Evaluator | General Counsel |
-| Matrix Staffing | Champion / User Buyer | Economic Buyer, Legal / Compliance, Technical Evaluator | General Counsel, VP of Operations |
-| Waverly HR | Economic Buyer | Champion / User Buyer, Legal / Compliance, Technical Evaluator | Chief of Staff |
-| Axiom Legal Partners | Technical Evaluator | Economic Buyer, Champion / User Buyer, Legal / Compliance | CTO, Director of Contracts |
-| Foxbrook Legal | Economic Buyer | Champion / User Buyer, Legal / Compliance, Technical Evaluator | - |
-| Forgepoint Capital | Executive Sponsor | Economic Buyer, Champion / User Buyer, Legal / Compliance, Technical Evaluator | - |
-| Praxis Finance | Champion / User Buyer | Economic Buyer, Legal / Compliance, Technical Evaluator | - |
-| Nordic Capital | Technical Evaluator | Economic Buyer, Champion / User Buyer, Legal / Compliance | - |
-| Grove Staffing | Economic Buyer | Champion / User Buyer, Legal / Compliance, Technical Evaluator | - |
-| Windfall Finance | Executive Sponsor | Economic Buyer, Champion / User Buyer, Legal / Compliance, Technical Evaluator | VP of Sales |
-| Lattice HR | Executive Sponsor | Economic Buyer, Champion / User Buyer, Legal / Compliance, Technical Evaluator | VP of Sales |
-| Granite Financial | Economic Buyer | Champion / User Buyer, Legal / Compliance, Technical Evaluator | CRO |
-| Pinnacle Legal | Technical Evaluator | Economic Buyer, Champion / User Buyer, Legal / Compliance | - |
-| Terrace Consulting | Economic Buyer | Champion / User Buyer, Legal / Compliance, Technical Evaluator | COO |
-| Bastion Legal | Economic Buyer | Champion / User Buyer, Legal / Compliance, Technical Evaluator | - |
-| Delphi Consulting | Executive Sponsor | Economic Buyer, Champion / User Buyer, Legal / Compliance, Technical Evaluator | VP of Sales |
-| Broadleaf Consulting | Executive Sponsor | Economic Buyer, Champion / User Buyer, Legal / Compliance, Technical Evaluator | General Counsel |
-| Bridgeline Capital | Legal / Compliance | Economic Buyer, Champion / User Buyer, Technical Evaluator | - |
-| Vantage Legal | Champion / User Buyer | Economic Buyer, Legal / Compliance, Technical Evaluator | CTO, Director of Contracts |
-| Juncture Legal | Economic Buyer | Champion / User Buyer, Legal / Compliance, Technical Evaluator | - |
+| Cornerstone HR | Legal / Compliance | Technical Evaluator, Economic Buyer, Champion / User Buyer | General Counsel, CFO |
+| Pacific Staffing | Champion / User Buyer | Legal / Compliance, Technical Evaluator, Economic Buyer | General Counsel |
+| Matrix Staffing | Champion / User Buyer | Legal / Compliance, Technical Evaluator, Economic Buyer | General Counsel, VP of Operations |
+| Waverly HR | Economic Buyer | Legal / Compliance, Technical Evaluator, Champion / User Buyer | Chief of Staff |
+| Axiom Legal Partners | Technical Evaluator | Legal / Compliance, Economic Buyer, Champion / User Buyer | CTO, Director of Contracts |
+| Foxbrook Legal | Economic Buyer | Legal / Compliance, Technical Evaluator, Champion / User Buyer | - |
+| Forgepoint Capital | Executive Sponsor | Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer | - |
+| Praxis Finance | Champion / User Buyer | Legal / Compliance, Technical Evaluator, Economic Buyer | - |
+| Nordic Capital | Technical Evaluator | Legal / Compliance, Economic Buyer, Champion / User Buyer | - |
+| Grove Staffing | Economic Buyer | Legal / Compliance, Technical Evaluator, Champion / User Buyer | - |
+| Windfall Finance | Executive Sponsor | Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer | VP of Sales |
+| Lattice HR | Executive Sponsor | Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer | VP of Sales |
+| Granite Financial | Economic Buyer | Legal / Compliance, Technical Evaluator, Champion / User Buyer | CRO |
+| Pinnacle Legal | Technical Evaluator | Legal / Compliance, Economic Buyer, Champion / User Buyer | - |
+| Terrace Consulting | Economic Buyer | Legal / Compliance, Technical Evaluator, Champion / User Buyer | COO |
+| Bastion Legal | Economic Buyer | Legal / Compliance, Technical Evaluator, Champion / User Buyer | - |
+| Delphi Consulting | Executive Sponsor | Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer | VP of Sales |
+| Broadleaf Consulting | Executive Sponsor | Legal / Compliance, Technical Evaluator, Economic Buyer, Champion / User Buyer | General Counsel |
+| Bridgeline Capital | Legal / Compliance | Technical Evaluator, Economic Buyer, Champion / User Buyer | - |
+| Vantage Legal | Champion / User Buyer | Legal / Compliance, Technical Evaluator, Economic Buyer | CTO, Director of Contracts |
+| Juncture Legal | Economic Buyer | Legal / Compliance, Technical Evaluator, Champion / User Buyer | - |

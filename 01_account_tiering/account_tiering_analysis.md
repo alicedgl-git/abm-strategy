@@ -11,8 +11,8 @@
 
 ## Scoring Methodology
 Tier scores use **firmographic signals only** — these are the attributes available
-for both training data and new accounts. Weights are derived from conversion ratios,
-not set arbitrarily.
+for both training data and new accounts. Weights are derived from **expected value
+(conversion rate × avg ACV)**, not just conversion rates or arbitrary assignments.
 
 | Signal Category | Max Points | How It's Calculated |
 |----------------|-----------|-------------------|
@@ -138,7 +138,7 @@ These signals don't affect the tier score but inform the activation strategy.
 
 ## How the Model Gets Refreshed
 **Tier re-scoring** (firmographic weights change):
-1. **Quarterly weight recalibration** — Feedback engine analyzes new S1 outcomes, recalculates conversion ratios, updates all 5 weight categories
+1. **Quarterly weight recalibration** — Feedback engine analyzes new S1 outcomes and ACV data, recalculates expected values, updates all 5 weight categories
 2. **Firmographic change** — Company gets acquired, raises funding, headcount grows (via enrichment tools like Clay/Apollo) → re-score
 3. **Growing dataset** — Each quarter, new funnel data (150 → 300 → 500 leads) makes weights more statistically reliable
 
@@ -149,7 +149,7 @@ These signals don't affect the tier score but inform the activation strategy.
 
 ## How AI Was Used
 1. **Pattern Discovery:** Claude Code analyzed 150 leads across 7 dimensions to identify which firmographic attributes predict conversion
-2. **Weight Derivation:** Each weight is mathematically derived: (segment_conversion_rate / baseline_rate) * multiplier
+2. **Weight Derivation:** Each weight is mathematically derived: (segment_expected_value / baseline_expected_value) * multiplier, where expected value = conversion rate × avg ACV
 3. **Separation of Concerns:** AI identified that behavioral signals shouldn't be in tier scores — they create a circular dependency (you need engagement to tier, but you need a tier to decide engagement strategy)
 4. **Continuous Learning:** The feedback engine recalibrates weights as new conversion data arrives, and the model gets sharper with each cycle
 

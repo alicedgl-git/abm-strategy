@@ -152,12 +152,12 @@ def get_channel_recommendation(channel, conversion_rate, volume):
 TIER_CHANNEL_MIX = {
     "T1": {
         "description": "1:1 Strategic — Personalized, data-driven plays focused on highest-converting channels",
-        "accounts": "~10 accounts",
+        "accounts": "~21 accounts",
         "budget_share": "40% of ABM budget",
         "channels": [
             {
                 "channel": "Paid Social (LinkedIn, Meta, Reddit, Quora, TikTok)",
-                "tactic": "LinkedIn matched audience ads targeting the specific 10 accounts (primary). Meta retargeting for cross-platform reinforcement. Reddit and Quora for community-based engagement in relevant subreddits and topics. TikTok for short-form video content targeting younger decision-makers. Single image ads (highest CTR) + video ads. Personalized creative per industry cluster. This is the primary awareness + engagement driver — our data shows Paid Social converts at 43%.",
+                "tactic": "LinkedIn matched audience ads targeting the specific 21 accounts (primary). Meta retargeting for cross-platform reinforcement. Reddit and Quora for community-based engagement in relevant subreddits and topics. TikTok for short-form video content targeting younger decision-makers. Single image ads (highest CTR) + video ads. Personalized creative per industry cluster. This is the primary awareness + engagement driver — our data shows Paid Social converts at 43%.",
                 "frequency": "Always-on during quarter, rotate creative bi-weekly across platforms",
                 "content": "Case study ads, product feature ads, social proof (customer quotes), compliance/security messaging. Short-form video (TikTok), community Q&A sponsorship (Reddit/Quora)",
             },
@@ -189,7 +189,7 @@ TIER_CHANNEL_MIX = {
     },
     "T2": {
         "description": "1:Few — Industry-cluster campaigns with targeted personalization",
-        "accounts": "~70 accounts across 16 industry clusters",
+        "accounts": "~77 accounts across 16 industry clusters",
         "budget_share": "40% of ABM budget",
         "channels": [
             {
@@ -232,7 +232,7 @@ TIER_CHANNEL_MIX = {
     },
     "T3": {
         "description": "1:Many — Programmatic, automated, nurture-focused",
-        "accounts": "~70 accounts",
+        "accounts": "~52 accounts",
         "budget_share": "20% of ABM budget",
         "channels": [
             {
@@ -800,8 +800,8 @@ def generate_quarterly_plan_report():
     lines.append("")
     lines.append("| Tier | Budget Share | Per-Account Investment | Rationale |")
     lines.append("|------|------------|----------------------|-----------|")
-    lines.append("| T1 (5-15 accounts) | 40% | ~4% of total budget per account | Highest-value accounts with 70% historical S1 rate. Personalized multi-channel plays justify the highest spend per account. |")
-    lines.append("| T2 (50-100 accounts) | 40% | ~0.5% per account | Volume tier with 30% historical S1 rate. Industry-cluster approach balances personalization and efficiency at scale. |")
+    lines.append("| T1 (15-25 accounts) | 40% | ~2% of total budget per account | Highest-value accounts with 43% historical S1 rate. Personalized multi-channel plays justify the highest spend per account. |")
+    lines.append("| T2 (50-100 accounts) | 40% | ~0.5% per account | Volume tier with 27% historical S1 rate. Industry-cluster approach balances personalization and efficiency at scale. |")
     lines.append("| T3 (50-200 accounts) | 20% | ~0.2% per account | Discovery/nurture pool. Fully automated, low-cost programmatic channels. Primary goal: identify future T2 accounts. |")
     lines.append("")
     lines.append("### Channel Budget Split Within Each Tier")

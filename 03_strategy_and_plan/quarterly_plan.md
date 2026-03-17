@@ -33,8 +33,8 @@ The following tools are essential to execute this strategy. The system breaks wi
 
 | Tier | Budget Share | Per-Account Investment | Rationale |
 |------|------------|----------------------|-----------|
-| T1 (5-15 accounts) | 40% | ~4% of total budget per account | Highest-value accounts with 70% historical S1 rate. Personalized multi-channel plays justify the highest spend per account. |
-| T2 (50-100 accounts) | 40% | ~0.5% per account | Volume tier with 30% historical S1 rate. Industry-cluster approach balances personalization and efficiency at scale. |
+| T1 (15-25 accounts) | 40% | ~2% of total budget per account | Highest-value accounts with 43% historical S1 rate. Personalized multi-channel plays justify the highest spend per account. |
+| T2 (50-100 accounts) | 40% | ~0.5% per account | Volume tier with 27% historical S1 rate. Industry-cluster approach balances personalization and efficiency at scale. |
 | T3 (50-200 accounts) | 20% | ~0.2% per account | Discovery/nurture pool. Fully automated, low-cost programmatic channels. Primary goal: identify future T2 accounts. |
 
 ### Channel Budget Split Within Each Tier

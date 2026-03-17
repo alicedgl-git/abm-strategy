@@ -128,11 +128,11 @@
 ## Channel Mix by Tier
 
 ### T1: 1:1 Strategic — Personalized, data-driven plays focused on highest-converting channels
-**Accounts:** ~10 accounts | **Budget:** 40% of ABM budget
+**Accounts:** ~21 accounts | **Budget:** 40% of ABM budget
 
 | Channel | Tactic | Frequency | Content |
 |---------|--------|-----------|---------|
-| Paid Social (LinkedIn, Meta, Reddit, Quora, TikTok) | LinkedIn matched audience ads targeting the specific 10 accounts (primary). Meta... | Always-on during quarter, rotate creative bi-weekly across platforms | Case study ads, product feature ads, social proof (customer ... |
+| Paid Social (LinkedIn, Meta, Reddit, Quora, TikTok) | LinkedIn matched audience ads targeting the specific 21 accounts (primary). Meta... | Always-on during quarter, rotate creative bi-weekly across platforms | Case study ads, product feature ads, social proof (customer ... |
 | LinkedIn Outreach (HeyReach) | Personalized connection requests + DM sequences to each buying committee member.... | 3-5 touches per persona over 4 weeks | Personalized video (Loom), custom business case, relevant ca... |
 | Email Sequences | 1:1 personalized email from AE referencing specific pains from sales notes. Mult... | 5-7 touch sequence over 3 weeks | ROI calculator pre-filled, competitive comparison (if compet... |
 | Virtual Executive Roundtable | Invite T1 economic buyers to a virtual industry roundtable (5-8 attendees). Peer... | 1x in Weeks 7-9 | Industry trends discussion, customer success stories, peer n... |
@@ -140,7 +140,7 @@
 
 
 ### T2: 1:Few — Industry-cluster campaigns with targeted personalization
-**Accounts:** ~70 accounts across 16 industry clusters | **Budget:** 40% of ABM budget
+**Accounts:** ~77 accounts across 16 industry clusters | **Budget:** 40% of ABM budget
 
 | Channel | Tactic | Frequency | Content |
 |---------|--------|-----------|---------|
@@ -153,7 +153,7 @@
 
 
 ### T3: 1:Many — Programmatic, automated, nurture-focused
-**Accounts:** ~70 accounts | **Budget:** 20% of ABM budget
+**Accounts:** ~52 accounts | **Budget:** 20% of ABM budget
 
 | Channel | Tactic | Frequency | Content |
 |---------|--------|-----------|---------|
